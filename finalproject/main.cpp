@@ -8,8 +8,7 @@ NOTE: You can turn on debug options in func.h
 */
 
 #include "func.h"
-#include "descriptions.h"
-#include "structs.h"
+#include "city.h"
 
 #include <iostream>
 #include <cstdlib>

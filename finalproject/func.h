@@ -3,7 +3,7 @@
 //purpose: Final Project
 //file: func.h
 
-#ifndef FINC_H
+#ifndef FUNC_H
 #define FUNC_H
 
 #include <string>
@@ -12,6 +12,7 @@ using namespace std;
 //-----===== CONSTANTS =====-----
 
 const bool DEBUG = false;
+const int GRID_SIZE = 7;
 
 //-----===== FUNCTIONS =====-----
 

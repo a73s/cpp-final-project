@@ -1,0 +1,40 @@
+//Author: Adam Seals (agsgv4)
+//date: 11/29/23
+//purpose: Final Project
+//file: jewel.h
+
+#ifndef JEWEL_H
+#define JEWEL_H
+
+#include "func.h"
+
+#include <iostream>
+#include <cstdlib>
+
+
+class jewel{
+
+    public:
+
+    private:
+    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+#endif
+
+
+
+
+
+
