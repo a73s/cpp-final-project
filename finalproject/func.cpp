@@ -1,6 +1,6 @@
 //Author: Adam Seals
-//date: 11/13/23
-//purpose: HW7
+//date: 11/29/23
+//purpose: Final Project
 //file: func.cpp
 
 #include "func.h"
