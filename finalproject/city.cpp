@@ -10,13 +10,20 @@
 #include <cstdlib>
 
 
-int city::getNumJewels(){
+int city::getNumJewels() const{
 
     return numJewels;
 }
 
 
-char city::getGridLocation(int column, int row){
+char city::getGridLocation(const int column, const int row){
 
     return cityGrid[column][row];
+}
+
+
+void city::setNumJewels(const int setnum){
+
+    numJewels = setnum;
+    return;
 }
