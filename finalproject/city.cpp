@@ -8,3 +8,15 @@
 
 #include <iostream>
 #include <cstdlib>
+
+
+int city::getNumJewels(){
+
+    return numJewels;
+}
+
+
+char city::getGridLocation(int column, int row){
+
+    return cityGrid[column][row];
+}
