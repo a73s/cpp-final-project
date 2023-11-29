@@ -7,7 +7,6 @@
 NOTE: You can turn on debug options in func.h
 */
 
-//testing
 
 #include "func.h"
 #include "city.h"
