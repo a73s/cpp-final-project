@@ -16,7 +16,31 @@ class jewel{
 
     public:
 
-    private:
+        //description: sets the values for the jewel, must be run after creation of the jewel, can only be run once, unless there is an error
+        //pre: input the initial X, Y, and value of the jewel, the X and Y should be within the bounds of the board and the jewel value should be positive
+        //post: the function will check if the X and Y are in the board returns 1 if there is an error, otherwise it will return 0, if there is an error the function may be run again
+        bool initJewel(const int X, const int Y, const int value);
+
+        //description: retrieves the x coordinate of the jewel
+        //pre: should be initialized befor calling, otherwise will return -1 no matter what
+        //post: returns the x coordinate of the jewel
+        int getX() const;
+
+        //description: retrieves the Y coordinate of the jewel
+        //pre: should be initialized befor calling, otherwise will return -1 no matter what
+        //post: returns the Y coordinate of the jewel
+        int getY() const;
+
+        //description: retrieves the value of the jewel
+        //pre: should be initialized befor calling, otherwise will return -1 no matter what
+        //post: returns the value og the jewel
+        int getValue() const;
+
+    private: 
+
+        bool initialized = false;
+        int jewelValue = -1;
+        int originalX = -1, originalY = -1;
     
 };
 
@@ -26,6 +50,10 @@ class jewel{
 
 
 
+
+//description: 
+//pre: 
+//post: 
 
 
 
