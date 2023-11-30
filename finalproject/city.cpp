@@ -27,3 +27,9 @@ void city::setNumJewels(const int setnum){
     numJewels = setnum;
     return;
 }
+
+void city::setGridLocation(const int column, const int row, const char charToSet){
+
+    cityGrid[column][row] = charToSet;
+    return;
+}
