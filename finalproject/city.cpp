@@ -10,7 +10,7 @@
 #include <cstdlib>
 
 
-int city::getNumJewels(){
+int city::getNumJewels() const{
 
     return numJewels;
 }
