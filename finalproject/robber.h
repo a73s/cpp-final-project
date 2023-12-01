@@ -23,12 +23,17 @@ class robber{
         //description: initializes the robber's grid location, this must be run after the creation of the robber
         //pre: the coordinate should be within the grid starting at 0 and ending at GRID_SIZE - 1
         //post: returns 1 if there is an error, 0 otherwise, changes robberX and robberY to the desired values. can be run again if there is an error
-        void init(const int X, const int Y);
+        bool init(const int X, const int Y);
         
         //description: picks up a jewel thats in the same place as the robber
         //pre: a jewel 
         //post: returns true if theres an error, otherwise return 0. adds the gem to the robber's bag
         bool pickUpLoot(jewel & j);
+
+        //description: moves the robber by 1 space in a random valid direction
+        //pre: robber should be initialized
+        //post: 
+        void move();
 
     private:
 

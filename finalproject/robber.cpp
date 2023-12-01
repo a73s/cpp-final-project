@@ -57,6 +57,7 @@ bool robber::pickUpLoot(jewel & j){
         return true;//return error if not in the same location
 
         if(debug){
+
             cout << "Error(robber.pickUpLoot()): robber and jewel not in the same place" << endl;
         }
     }
@@ -64,6 +65,94 @@ bool robber::pickUpLoot(jewel & j){
     return false;
 }
 
+
+void robber::move(){
+
+    if(!initialized){//do not run function if the robber is not initialized
+
+        if(DEBUG){
+            cout << "DEBUG(robber.move): robber not initialized, not moved" << endl;
+        }
+
+        return;
+    }
+
+    int moveDownAmount = 0, moveRightAmount = 0;
+    int newx = robberX, newy = robberY;
+
+    do{//we can only get away with using a do while loop because there is never a situation where there is not an open space to move to
+
+        choice = generateRand(0,7);
+
+        switch(choice){
+
+            case 0:{
+                
+                moveDownAmount = -1;
+                moveRightAmount = -1;
+                break;
+            }
+            case 1:{
+
+                moveDownAmount = -1;
+                moveRightAmount = 0;
+                break;
+            }
+            case 2:{
+                
+                moveDownAmount = -1;
+                moveRightAmount = 1;
+                break;
+            }
+            case 3:{
+                
+                moveDownAmount = 0;
+                moveRightAmount = -1;
+                break;
+            }
+            case 4:{
+
+                moveDownAmount = 0;
+                moveRightAmount = 1;                
+                break;
+            }
+            case 5:{
+                
+                moveDownAmount = 1;
+                moveRightAmount = -1;
+                break;
+            }
+            case 6:{
+                
+                moveDownAmount = 1;
+                moveRightAmount = 0;
+                break;
+            }
+            case 7:{
+                
+                moveDownAmount = 1;
+                moveRightAmount = 1;
+                break;
+            }
+            
+        }
+
+        int newx = robberX + moveRightAmount;
+        int newy = robberY + moveDownAmount;
+
+    }while(!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1));//redo if it would move us out of bounds
+
+    robberX = newx;
+    robberY = newy;
+
+    if(DEBUG){
+
+        cout << "DEBUG: The new x is " << newx << endl;
+        cout << "DEBUG: The new y is " << newy << endl;
+    }
+
+    return;
+}
 
 
 
