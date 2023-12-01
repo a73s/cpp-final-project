@@ -15,6 +15,8 @@
 class robber{
 
     public:
+    
+        const unsigned long int id = generateRand(0,18446744073709551614);//assign a random id in the range of an unsigned long int
 
     private:
     
