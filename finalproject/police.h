@@ -11,7 +11,9 @@
 #include <iostream>
 #include <cstdlib>
 
-
+//description: 
+//pre: 
+//post: 
 class police{
 
     public:
@@ -27,7 +29,9 @@ class police{
 
 
 
-
+//description: 
+//pre: 
+//post: 
 
 
 

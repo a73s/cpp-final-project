@@ -11,7 +11,9 @@
 #include <iostream>
 #include <cstdlib>
 
-
+//description: 
+//pre: 
+//post: 
 class jewel{
 
     public:
@@ -19,7 +21,7 @@ class jewel{
         //description: sets the values for the jewel, must be run after creation of the jewel, can only be run once, unless there is an error
         //pre: input the initial X, Y, and value of the jewel, the X and Y should be within the bounds of the board and the jewel value should be positive
         //post: the function will check if the X and Y are in the board returns 1 if there is an error, otherwise it will return 0, if there is an error the function may be run again
-        bool initJewel(const int X, const int Y, const int value);
+        bool init(const int X, const int Y, const int value);
 
         //description: retrieves the x coordinate of the jewel
         //pre: should be initialized befor calling, otherwise will return -1 no matter what
@@ -40,7 +42,7 @@ class jewel{
 
         bool initialized = false;
         int jewelValue = -1;
-        int originalX = -1, originalY = -1;
+        int originalX = -1, originalY = -1;//x values start at 0 at the left and go to GRID_SIZE - 1 at the right, same for y values except top to bottom
     
 };
 

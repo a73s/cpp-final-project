@@ -11,7 +11,9 @@
 #include <iostream>
 #include <cstdlib>
 
-
+//description: 
+//pre: 
+//post: 
 class city{
 
     public:

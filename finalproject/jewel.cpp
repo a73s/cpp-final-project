@@ -13,7 +13,7 @@ using namespace std;
 
 
 
-bool jewel::initJewel(const int X, const int Y, const int value){
+bool jewel::init(const int X, const int Y, const int value){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
@@ -25,6 +25,10 @@ bool jewel::initJewel(const int X, const int Y, const int value){
             jewelValue = value;
 
         }else{
+
+            if(DEBUG){
+                cout << "ERROR: jewel.init() failed, jewel coordinates out of range" << endl;
+            }
 
             initialized = false;
         }
