@@ -18,10 +18,6 @@ int generateRand(const int & min, const int & max){
     return (rand()%(max-min+1)+min);
 }
 
-unsigned long int generateRand(const unsigned long int & min, const unsigned long int & max){
-
-    return (rand()%(max-min+1)+min);
-}
 
 
 

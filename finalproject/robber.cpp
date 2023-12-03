@@ -10,11 +10,11 @@
 #include <cstdlib>
 
 
-bool robber::init(const int X, const int Y);{
+bool robber::init(const int X, const int Y){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
-        if((X < GRID_SIZE && Y < GRID_SIZE && X > -1 && Y > -1) && (value > -1)){//if the coordinates are within the grid and the value is positive
+        if(X < GRID_SIZE && Y < GRID_SIZE && X > -1 && Y > -1){//if the coordinates are within the grid and the value is positive
 
             initialized = true;
             robberX = X;
@@ -35,9 +35,9 @@ bool robber::init(const int X, const int Y);{
 
 bool robber::pickUpLoot(jewel & j){
 
-    jewelX = j.getX();
-    jewelY = j.getY();
-    jewelVal = j.getValue();
+    int jewelX = j.getX();
+    int jewelY = j.getY();
+    int jewelVal = j.getValue();
 
     if(gemBag == 10){
 
@@ -51,12 +51,14 @@ bool robber::pickUpLoot(jewel & j){
     if(jewelX == robberX && jewelY == robberY){//if in the same location
 
         gemBag++;
-        bagValue += jewelValue;
+        bagValue += jewelVal;
+        //collectiveBagValue += jewelVal;
+
     }else{
 
         return true;//return error if not in the same location
 
-        if(debug){
+        if(DEBUG){
 
             cout << "Error(robber.pickUpLoot()): robber and jewel not in the same place" << endl;
         }
@@ -82,7 +84,7 @@ void robber::move(){
 
     do{//we can only get away with using a do while loop because there is never a situation where there is not an open space to move to
 
-        choice = generateRand(0,7);
+        int choice = generateRand(0,7);
 
         switch(choice){
 
@@ -134,7 +136,6 @@ void robber::move(){
                 moveRightAmount = 1;
                 break;
             }
-            
         }
 
         int newx = robberX + moveRightAmount;
@@ -153,9 +154,5 @@ void robber::move(){
 
     return;
 }
-
-
-
-
 
 

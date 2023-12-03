@@ -11,8 +11,11 @@ using namespace std;
 
 //-----===== CONSTANTS =====-----
 
-const bool DEBUG = false;
+const bool DEBUG = true;
 const int GRID_SIZE = 7;
+const int NUM_STARTING_JEWELS = 30;
+const int JEWEL_MIN_VALUE = 10;
+const int JEWEL_MAX_VALUE = 1000;
 
 //-----===== FUNCTIONS =====-----
 
@@ -40,7 +43,7 @@ int generateRand(const int & min = 0, const int & max = 9);
 //description: generates a random number in the range (inclusive)
 //pre:input 2 integers, otherwise will set to default, srand is assumed to be pre-seeded in main
 //post: returns the random number within the parameters
-unsigned long int generateRand(const unsigned long int & min = 0, const unsigned long int & max = 9);
+unsigned long int generateBigRand(const unsigned long int & min = 0, const unsigned long int & max = 9);
 
 
 

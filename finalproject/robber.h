@@ -7,6 +7,7 @@
 #define ROBBER_H
 
 #include "func.h"
+#include "jewel.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -18,7 +19,7 @@ class robber{
 
     public:
 
-        const unsigned long int id = generateRand(0,18446744073709551614);//assign a random id in the range of an unsigned long int
+        const int id = generateRand(0,9999999);//assign a random id and hope theres no collision
 
         //description: initializes the robber's grid location, this must be run after the creation of the robber
         //pre: the coordinate should be within the grid starting at 0 and ending at GRID_SIZE - 1
@@ -34,6 +35,13 @@ class robber{
         //pre: robber should be initialized
         //post: 
         void move();
+
+        /*
+        //description: 
+        //pre: 
+        //post: 
+        void getArrested()
+        */
 
     private:
 

@@ -17,31 +17,15 @@
 class city{
 
     public:
-        
-        //description: gets the number of jewels on the board
-        //pre: none
-        //post: returns the number of jewels on the board
-        int getNumJewels() const;
 
-        //description: returns whats in the grid in the location given to it
-        //pre: the column you want, starts at 0 at the top, goes to (GRID_SIZE - 1), the row you want, starts at 0 at the left, goes to (GRID_SIZE - 1) on the right
-        //post: returns the character from the array
-        char getGridLocation(const int column, const int row);
+    int numJewels = 0;
 
-        //description: sets the number of jewels on the board
-        //pre: input the number you want to set to
-        //post: returns nothing, sets the number of jewels
-        void setNumJewels(const int setnum);
-
-        //description: sets a particular 
-        //pre: the column you want, starts at 0 at the top, goes to (GRID_SIZE - 1), the row you want, starts at 0 at the left, goes to (GRID_SIZE - 1) on the right. also input the char you want to set that location to.
-        //post: returns nothing, changes the grid to your liking
-        void setGridLocation(const int column, const int row, const char charToSet);
+    //each grid starts at x=0 and y=0 in the top left and ends at x=GRID_SIZE-1 and y=GRID_SIZE-1 in the bottom right
+    char jewelGrid[GRID_SIZE][GRID_SIZE] = {};
+    char robberGrid[GRID_SIZE][GRID_SIZE] = {};
+    char copGrid[GRID_SIZE][GRID_SIZE] = {};
 
     private:
-
-        int numJewels;//numbers of jewels on the city grid
-        char cityGrid[GRID_SIZE][GRID_SIZE] = {};
 
     
 };
