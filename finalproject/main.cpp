@@ -18,6 +18,7 @@ if(DEBUG){
 }
 
 3. always use "g++ -Wall -W -s -pedantic-errors" when compiling, this is equivalent to fg++ on the school machines.
+4. use a branch when making changes, dont commit directly to main
 */
 
 #include "func.h"
