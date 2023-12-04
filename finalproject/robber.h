@@ -19,12 +19,16 @@ class robber{
 
     public:
 
-        const int id = generateRand(0,9999999);//assign a random id and hope theres no collision
+        static int currentId;
+
+        const int id = ++currentId;//increment then assign id
+
+        robber(){}//default constructor
 
         //description: initializes the robber's grid location, this must be run after the creation of the robber
         //pre: the coordinate should be within the grid starting at 0 and ending at GRID_SIZE - 1
         //post: returns 1 if there is an error, 0 otherwise, changes robberX and robberY to the desired values. can be run again if there is an error
-        bool init(const int X, const int Y, const bool isGreedyInput);
+        robber(const int X, const int Y, const bool isGreedyInput);
         
         //description: picks up a jewel thats in the same place as the robber
         //pre: a jewel 
@@ -51,7 +55,7 @@ class robber{
         int bagValue = 0;
         static int collectiveBagValue;
         bool active = true;
-        bool isGreedy = generateRand(0,1);//50/50 chance of being greedy or not
+        bool isGreedy = generateRand(0,1);//50/50 chance of being greedy if the default constructor is run
 
 };
 
