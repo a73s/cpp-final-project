@@ -21,6 +21,12 @@ if(DEBUG){
 4. use a branch when making changes, dont commit directly to main
 */
 
+/*
+todo:
+fix robber id and remove generateBigRand()
+*/
+
+
 #include "func.h"
 #include "city.h"
 #include "jewel.h"
