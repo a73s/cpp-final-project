@@ -25,6 +25,7 @@ robber::robber(const int X, const int Y, const bool isGreedyInput){
             robberX = X;
             robberY = Y;
             isGreedy = isGreedyInput;
+            id = ++currentId;//increment then assign id
 
         }else{
 

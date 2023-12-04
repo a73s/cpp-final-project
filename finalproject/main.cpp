@@ -66,7 +66,32 @@ int main(){
         jewels[i-1] = newJewel;
 
         city.jewelGrid[newJewelX][newJewelY] = 'j';
+    }
 
+    robber robbers[NUM_STARTING_ROBBERS] = {};
+
+    //create robbers
+
+    //regular robbers
+    for(int i = 1; i <= NUM_STARTING_ROBBERS-2; i++){
+
+        if(DEBUG){
+
+            cout << "DEBUG(main): creating robber #" << i << endl;
+        }
+
+        int newRobberX, newRobberY;
+
+        do{
+
+            newRobberX = generateRand(0, GRID_SIZE - 1);
+            newRobberY = generateRand(0, GRID_SIZE - 1);
+
+        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');
+
+        robber newRobber(newRobberX, newRobberY, 0);
+        robbers[i-1] = newRobber;
+        city.robberGrid[newRobberX][newRobberY] = 'p';
     }
 
 

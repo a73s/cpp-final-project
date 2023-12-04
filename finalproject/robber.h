@@ -21,7 +21,7 @@ class robber{
 
         static int currentId;
 
-        const int id = ++currentId;//increment then assign id
+        const int id = -1;//increment then assign id
 
         robber(){}//default constructor
 
@@ -55,7 +55,7 @@ class robber{
         int bagValue = 0;
         static int collectiveBagValue;
         bool active = true;
-        bool isGreedy = generateRand(0,1);//50/50 chance of being greedy if the default constructor is run
+        bool isGreedy;//50/50 chance of being greedy if the default constructor is run
 
 };
 
