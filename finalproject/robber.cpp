@@ -1,4 +1,4 @@
-//Author: Adam Seals (agsgv4 section 306)
+//Author: Adam Seals (agsgv4 lab section 306, class section 101)
 //date: 11/29/23
 //purpose: Final Project
 //file: robber.cpp
@@ -10,7 +10,10 @@
 #include <cstdlib>
 
 
-bool robber::init(const int X, const int Y){
+int robber::collectiveBagValue = 0;
+
+
+bool robber::init(const int X, const int Y, const bool isGreedyInput){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
@@ -19,6 +22,7 @@ bool robber::init(const int X, const int Y){
             initialized = true;
             robberX = X;
             robberY = Y;
+            isGreedy = isGreedyInput;
 
         }else{
 
@@ -52,7 +56,7 @@ bool robber::pickUpLoot(jewel & j){
 
         gemBag++;
         bagValue += jewelVal;
-        //collectiveBagValue += jewelVal;
+        collectiveBagValue += jewelVal;
 
     }else{
 
@@ -138,8 +142,8 @@ void robber::move(){
             }
         }
 
-        int newx = robberX + moveRightAmount;
-        int newy = robberY + moveDownAmount;
+        newx = robberX + moveRightAmount;
+        newy = robberY + moveDownAmount;
 
     }while(!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1));//redo if it would move us out of bounds
 

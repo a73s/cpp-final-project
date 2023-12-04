@@ -1,4 +1,4 @@
-//Author: Adam Seals (agsgv4 section 306)
+//Author: Adam Seals (agsgv4 lab section 306, class section 101)
 //date: 11/29/23
 //purpose: Final Project
 //file: jewel.cpp
@@ -12,8 +12,7 @@
 using namespace std;
 
 
-
-bool jewel::init(const int X, const int Y, const int value){
+jewel::jewel(const int X, const int Y, const int value){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
@@ -34,7 +33,7 @@ bool jewel::init(const int X, const int Y, const int value){
         }
     }
 
-    return !initialized;
+    return;
 }
 
 int jewel::getX() const{

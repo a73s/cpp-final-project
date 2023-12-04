@@ -1,4 +1,4 @@
-//Author: Adam Seals (agsgv4 section 306)
+//Author: Adam Seals (agsgv4 lab section 306, class section 101)
 //date: 11/29/23
 //purpose: Final Project
 //file: jewel.h
@@ -18,10 +18,12 @@ class jewel{
 
     public:
 
+        jewel(){}
+
         //description: sets the values for the jewel, must be run after creation of the jewel, can only be run once, unless there is an error
         //pre: input the initial X, Y, and value of the jewel, the X and Y should be within the bounds of the board and the jewel value should be positive
         //post: the function will check if the X and Y are in the board returns 1 if there is an error, otherwise it will return 0, if there is an error the function may be run again
-        bool init(const int X, const int Y, const int value);
+        jewel(const int X, const int Y, const int value);
 
         //description: retrieves the x coordinate of the jewel
         //pre: should be initialized befor calling, otherwise will return -1 no matter what
