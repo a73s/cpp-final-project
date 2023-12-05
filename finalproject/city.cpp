@@ -89,5 +89,10 @@ void city::printGrid(){
 
     }
 
-    cout << "X" << endl;
+    cout << "X" << endl;  
+    cout << " Key: " << endl;
+    cout << "       robber: \'p\'" << endl;
+    cout << "greedy robber: \'r\'" << endl;
+    cout << "        jewel: \'j\'" << endl;
+    cout << "          cop: \'c\'" << endl;
 }
