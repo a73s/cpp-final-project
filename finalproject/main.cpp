@@ -26,12 +26,14 @@ to do
 make the robber class modify the city grid when the robber moves
 */
 
-#include "func.h"
-#include "city.h"
 #include "jewel.h"
+
 #include "robber.h"
-#include "police.h"
 #include "city.h"
+
+
+#include "func.h"
+#include "police.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -40,10 +42,9 @@ using namespace std;
 
 int main(){
 
-    srand(100);
+    srand(time(NULL));
 
     city city;
-    jewel jewels[NUM_STARTING_JEWELS] = {};
 
     //generate jewels onto the grid
     for(int i = 1; i <= NUM_STARTING_JEWELS; i++){
@@ -63,18 +64,18 @@ int main(){
             if(DEBUG){
                 
                 cout << "DEBUG(main): generating random for jewel #" << i << endl;
+                cout << "coordinates X, Y: " << newJewelX << " " << newJewelY << endl;
             }
             
         }while(city.jewelGrid[newJewelX][newJewelY] == 'j');//make sure that theres only one jewel in each spot/ that we have 30 total
 
         jewel newJewel(newJewelX, newJewelY, generateRand(JEWEL_MIN_VALUE, JEWEL_MAX_VALUE));//initialize jewel objects
 
-        jewels[i-1] = newJewel;
-
-        city.jewelGrid[newJewelX][newJewelY] = 'j';
+        city.jewels[i-1] = newJewel;
+        city.updateLetterGrids();
     }
 
-    robber robbers[NUM_STARTING_ROBBERS] = {};
+    
 
     //-----===== Create Robbers =====-----
 
@@ -93,10 +94,10 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');
+        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');//if there is a jewel or a robber in that spot
 
         robber newRobber(newRobberX, newRobberY, 0);
-        robbers[i-1] = newRobber;
+        city.robbers[i-1] = newRobber;
         city.robberGrid[newRobberX][newRobberY] = 'p';
     }
 
@@ -115,15 +116,17 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');
+        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGridGreedy[newRobberX][newRobberY] == 'r');
 
         robber newRobber(newRobberX, newRobberY, 1);
-        robbers[i-1] = newRobber;
-        city.robberGrid[newRobberX][newRobberY] = 'r';
+        city.robbers[i-1] = newRobber;
+        city.robberGridGreedy[newRobberX][newRobberY] = 'r';
     }
 
+    cout << "The starting grid: " << endl;
+    city.printGrid();
 
-    
+
 
 
     return 0;

@@ -7,12 +7,11 @@
 #define ROBBER_H
 
 #include "func.h"
-#include "city.h"
 #include "jewel.h"
-#include "police.h"
 
 #include <iostream>
 #include <cstdlib>
+
 
 //description: 
 //pre: 
@@ -39,8 +38,8 @@ class robber{
         //description: moves the robber by 1 space in a random valid direction
         //pre: robber should be initialized
         //post: 
-        void move();
-        //void move(city & c);
+        //void move();
+        void move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZE]);
 
         /*
         //description: 
