@@ -23,7 +23,6 @@ if(DEBUG){
 
 /*
 to do 
-make the robber class modify the city grid when the robber moves
 change random seed back to 100
 add police to many member functions when police class is complete 
 */
@@ -96,6 +95,12 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
+            if(DEBUG){
+                
+                cout << "DEBUG(main): generating random for robber #" << i << endl;
+                cout << "coordinates X, Y: " << newRobberX << " " << newRobberY << endl;
+            }
+
         }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');//if there is a jewel or a robber in that spot
 
         robber newRobber(newRobberX, newRobberY, 0);
@@ -151,7 +156,21 @@ int main(){
     //Print the starting grid
     cout << "The starting grid: " << endl;
     city.printGrid();
-    //city.updateLetterGrids();
+
+
+    /*
+    bool moveAgain;
+    
+    //some test code
+    do{
+
+        city.robbers[0].move(&city);
+        city.printGrid();
+        cout << "Move again?(1/0) ";
+        cin >> moveAgain;
+
+    }while(moveAgain);
+    */
 
 
 

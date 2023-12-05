@@ -12,6 +12,7 @@
 #include <iostream>
 #include <cstdlib>
 
+class city;//fixes error
 
 //description: 
 //pre: 
@@ -40,7 +41,7 @@ class robber{
         //description: moves the robber by 1 space in a random valid direction
         //pre: robber should be initialized
         //post: 
-        void move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZE]);
+        void move(city* c);
 
 
         /*
