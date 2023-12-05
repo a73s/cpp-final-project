@@ -12,8 +12,10 @@
 
 int robber::collectiveBagValue = 0;
 
+int robber::currentId = 0;
 
-bool robber::init(const int X, const int Y, const bool isGreedyInput){
+
+robber::robber(const int X, const int Y, const bool isGreedyInput){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
@@ -23,21 +25,22 @@ bool robber::init(const int X, const int Y, const bool isGreedyInput){
             robberX = X;
             robberY = Y;
             isGreedy = isGreedyInput;
+            id = ++currentId;//increment then assign id
 
         }else{
 
             if(DEBUG){
-                cout << "ERROR: robber.init() failed, robber coordinates out of range" << endl;
+                cout << "ERROR: robber constructor failed, robber coordinates out of range" << endl;
             }
 
             initialized = false;
         }
     }
 
-    return !initialized;
+    return;
 }
 
-bool robber::pickUpLoot(jewel & j){
+bool robber::pickUpLoot(jewel j){
 
     int jewelX = j.getX();
     int jewelY = j.getY();
@@ -73,6 +76,7 @@ bool robber::pickUpLoot(jewel & j){
 
 
 void robber::move(){
+//void robber::move(city & c){
 
     if(!initialized){//do not run function if the robber is not initialized
 
