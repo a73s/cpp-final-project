@@ -18,14 +18,13 @@ if(DEBUG){
 }
 
 3. always use "g++ -Wall -W -s -pedantic-errors" when compiling, this is equivalent to fg++ on the school machines.
+4. use a branch when making changes, dont commit directly to main
 */
-
 
 /*
 to do 
 make the robber class modify the city grid when the robber moves
-*/
-
+/*
 
 #include "func.h"
 #include "city.h"
