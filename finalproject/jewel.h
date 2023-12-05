@@ -7,6 +7,8 @@
 #define JEWEL_H
 
 #include "func.h"
+#include "city.h"
+#include "police.h"
 
 #include <iostream>
 #include <cstdlib>

@@ -40,7 +40,7 @@ robber::robber(const int X, const int Y, const bool isGreedyInput){
     return;
 }
 
-bool robber::pickUpLoot(jewel & j){
+bool robber::pickUpLoot(jewel j){
 
     int jewelX = j.getX();
     int jewelY = j.getY();
@@ -76,6 +76,7 @@ bool robber::pickUpLoot(jewel & j){
 
 
 void robber::move(){
+//void robber::move(city & c){
 
     if(!initialized){//do not run function if the robber is not initialized
 
