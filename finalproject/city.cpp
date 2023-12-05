@@ -47,10 +47,11 @@ void city::updateLetterGrids(){
 
 void city::printGrid(){
 
-    cout << "-------------------------------------" << endl;
-    cout << "   0    1    2    3    4    5    6   Y"<< endl;
+    cout << " |0      |1      |2      |3      |4      |5      |6      |Y"<< endl;
 
     for(int i = 0; i < GRID_SIZE; i++){
+
+        cout << "----------------------------------------------------------" << endl;
 
         cout << i;
 
@@ -65,13 +66,25 @@ void city::printGrid(){
                 tempNumThings++;
             }
 
-            if(robberGrid[i][j] == 'p'){
+            if(robberGrid1[i][j] == 'p'){
 
                 cout << 'p';
                 tempNumThings++;
             }
 
-            if(robberGridGreedy[i][j] == 'r'){
+            if(robberGrid2[i][j] == 'p'){
+
+                cout << 'p';
+                tempNumThings++;
+            }
+
+            if(robberGridGreedy1[i][j] == 'r'){
+
+                cout << 'r';
+                tempNumThings++;
+            }
+
+            if(robberGridGreedy2[i][j] == 'r'){
 
                 cout << 'r';
                 tempNumThings++;
@@ -79,7 +92,7 @@ void city::printGrid(){
 
             //add thing to print cops
 
-            for(int k = 0; k < 4 - tempNumThings; k++){//allows us to keep the spacing consistent
+            for(int k = 0; k < 7 - tempNumThings; k++){//allows us to keep the spacing consistent
 
                 cout << ' ';
             }
@@ -89,8 +102,9 @@ void city::printGrid(){
 
     }
 
+    cout << "----------------------------------------------------------" << endl;
     cout << "X" << endl;  
-    cout << " Key: " << endl;
+    cout << "Key: " << endl;
     cout << "       robber: \'p\'" << endl;
     cout << "greedy robber: \'r\'" << endl;
     cout << "        jewel: \'j\'" << endl;
