@@ -3,6 +3,8 @@
 //purpose: Final Project
 //file: city.h
 
+//Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
+
 #ifndef CITY_H
 #define CITY_H
 

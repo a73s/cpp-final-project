@@ -3,6 +3,8 @@
 //purpose: Final Project
 //file: robber.h
 
+//Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
+
 #ifndef ROBBER_H
 #define ROBBER_H
 
