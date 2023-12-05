@@ -76,7 +76,7 @@ bool robber::pickUpLoot(jewel j){
 
 
 //void robber::move(){
-void robber::move(city & c){
+void robber::move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZE]){
 
     if(!initialized){//do not run function if the robber is not initialized
 
@@ -151,7 +151,7 @@ void robber::move(city & c){
 
     }while(!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1));//redo if it would move us out of bounds
 
-    if(c.robberGrid[robberX][robberY] == 'p' || c.robberGrid[robberX][robberY] == 'r'){//if theres another robber in that spot
+    if(robberGrid[robberX][robberY] == 'p' || robberGridGreedy[robberX][robberY] == 'r'){//if theres another robber in that spot
 
 
     }

@@ -26,12 +26,14 @@ to do
 make the robber class modify the city grid when the robber moves
 */
 
-#include "func.h"
-#include "city.h"
 #include "jewel.h"
+
 #include "robber.h"
-#include "police.h"
 #include "city.h"
+
+
+#include "func.h"
+#include "police.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -62,6 +64,7 @@ int main(){
             if(DEBUG){
                 
                 cout << "DEBUG(main): generating random for jewel #" << i << endl;
+                cout << "coordinates X, Y: " << newJewelX << " " << newJewelY << endl;
             }
             
         }while(city.jewelGrid[newJewelX][newJewelY] == 'j');//make sure that theres only one jewel in each spot/ that we have 30 total
@@ -69,8 +72,7 @@ int main(){
         jewel newJewel(newJewelX, newJewelY, generateRand(JEWEL_MIN_VALUE, JEWEL_MAX_VALUE));//initialize jewel objects
 
         city.jewels[i-1] = newJewel;
-
-        city.jewelGrid[newJewelX][newJewelY] = 'j';
+        city.updateLetterGrids();
     }
 
     
@@ -121,8 +123,10 @@ int main(){
         city.robberGridGreedy[newRobberX][newRobberY] = 'r';
     }
 
+    cout << "The starting grid: " << endl;
+    city.printGrid();
 
-    
+
 
 
     return 0;

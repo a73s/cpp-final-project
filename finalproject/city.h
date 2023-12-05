@@ -6,6 +6,9 @@
 #ifndef CITY_H
 #define CITY_H
 
+
+
+
 #include "func.h"
 #include "robber.h"
 #include "jewel.h"
@@ -13,12 +16,24 @@
 #include <iostream>
 #include <cstdlib>
 
+//class robber;//fixes error, same as the pointer on the robber array
+
 //description: 
 //pre: 
 //post: 
 class city{
 
     public:
+
+    //description: 
+    //pre: 
+    //post: 
+    void updateLetterGrids();
+
+    //description: 
+    //pre: 
+    //post: 
+    void printGrid();
 
     int numJewels = 0;
 
