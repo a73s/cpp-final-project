@@ -75,7 +75,7 @@ void city::updateLetterGrids(){
 
         robber tempRobber = robbers[i];
 
-        if(!tempRobber.active && tempRobber.initialized){
+        if(!tempRobber.isActive() && tempRobber.isInitialized()){
 
             switch(i){
                 case 0:{
@@ -168,8 +168,9 @@ void city::printGrid(){
     cout << "----------------------------------------------------------" << endl;
     cout << "X" << endl;  
     cout << "Key: " << endl;
-    cout << "       robber: \'p\'" << endl;
-    cout << "greedy robber: \'r\'" << endl;
-    cout << "        jewel: \'j\'" << endl;
-    cout << "          cop: \'c\'" << endl;
+    cout << "       robber: \'p\'" << "     S" << endl;
+    cout << "greedy robber: \'r\'" << "     |" << endl;
+    cout << "        jewel: \'j\'" << " E---|---W" << endl;
+    cout << "          cop: \'c\'" << "     |" << endl;
+    cout << "                       N" << endl;
 }

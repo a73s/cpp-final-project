@@ -27,7 +27,7 @@ class robber{
         //description: initializes the robber's grid location, this must be run after the creation of the robber
         //pre: the coordinate should be within the grid starting at 0 and ending at GRID_SIZE - 1
         //post: returns 1 if there is an error, 0 otherwise, changes robberX and robberY to the desired values. can be run again if there is an error
-        robber(const int X, const int Y, const bool isGreedyInput);
+        robber(const int X, const int Y, const bool isGreedyInput, const bool isActive = true);
         
 
         //-----====== functions =====-----

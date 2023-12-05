@@ -42,16 +42,17 @@ class city{
 
 
     //theres one for each robber
-    char robberGrid1[GRID_SIZE][GRID_SIZE] = {};//'p' for normal robber
-    char robberGrid2[GRID_SIZE][GRID_SIZE] = {};//'p' for normal robber
+    //'p' for normal robber, 'r' for greedy robber
+    char robberGrid1[GRID_SIZE][GRID_SIZE] = {};//robber 1
+    char robberGrid2[GRID_SIZE][GRID_SIZE] = {};//robber 2
 
-    char robberGridGreedy1[GRID_SIZE][GRID_SIZE] = {};// 'r' for greedy robber
-    char robberGridGreedy2[GRID_SIZE][GRID_SIZE] = {};// 'r' for greedy robber
+    char robberGridGreedy1[GRID_SIZE][GRID_SIZE] = {};// greedy robber 1
+    char robberGridGreedy2[GRID_SIZE][GRID_SIZE] = {};// greedy robber 2
 
     char copGrid1[GRID_SIZE][GRID_SIZE] = {};
     char copGrid2[GRID_SIZE][GRID_SIZE] = {};
 
-    robber robbers[NUM_STARTING_ROBBERS] = {};
+    robber robbers[NUM_STARTING_ROBBERS] = {};// should be placed in this order: robber 1, robber 2, greedy robber 1, greedy robber 2
     jewel jewels[NUM_STARTING_JEWELS] = {};
 
     private:

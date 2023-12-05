@@ -19,7 +19,7 @@ int robber::currentId = 0;
 //-----====== Constructors =====-----
 
 
-robber::robber(const int X, const int Y, const bool isGreedyInput){
+robber::robber(const int X, const int Y, const bool isGreedyInput, const bool isActive){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
@@ -30,7 +30,7 @@ robber::robber(const int X, const int Y, const bool isGreedyInput){
             robberY = Y;
             isGreedy = isGreedyInput;
             id = ++currentId;//increment then assign id
-            active = true;
+            active = isActive;
 
         }else{
 

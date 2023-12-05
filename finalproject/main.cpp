@@ -150,6 +150,8 @@ int main(){
     //Print the starting grid
     cout << "The starting grid: " << endl;
     city.printGrid();
+    city.updateLetterGrids();
+    city.printGrid();
 
 
 
