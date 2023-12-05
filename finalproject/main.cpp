@@ -43,7 +43,6 @@ int main(){
     srand(100);
 
     city city;
-    jewel jewels[NUM_STARTING_JEWELS] = {};
 
     //generate jewels onto the grid
     for(int i = 1; i <= NUM_STARTING_JEWELS; i++){
@@ -69,12 +68,12 @@ int main(){
 
         jewel newJewel(newJewelX, newJewelY, generateRand(JEWEL_MIN_VALUE, JEWEL_MAX_VALUE));//initialize jewel objects
 
-        jewels[i-1] = newJewel;
+        city.jewels[i-1] = newJewel;
 
         city.jewelGrid[newJewelX][newJewelY] = 'j';
     }
 
-    robber robbers[NUM_STARTING_ROBBERS] = {};
+    
 
     //-----===== Create Robbers =====-----
 
@@ -93,10 +92,10 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');
+        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');//if there is a jewel or a robber in that spot
 
         robber newRobber(newRobberX, newRobberY, 0);
-        robbers[i-1] = newRobber;
+        city.robbers[i-1] = newRobber;
         city.robberGrid[newRobberX][newRobberY] = 'p';
     }
 
@@ -115,11 +114,11 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');
+        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGridGreedy[newRobberX][newRobberY] == 'r');
 
         robber newRobber(newRobberX, newRobberY, 1);
-        robbers[i-1] = newRobber;
-        city.robberGrid[newRobberX][newRobberY] = 'r';
+        city.robbers[i-1] = newRobber;
+        city.robberGridGreedy[newRobberX][newRobberY] = 'r';
     }
 
 

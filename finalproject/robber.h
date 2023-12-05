@@ -39,8 +39,8 @@ class robber{
         //description: moves the robber by 1 space in a random valid direction
         //pre: robber should be initialized
         //post: 
-        void move();
-        //void move(city & c);
+        //void move();
+        void move(city & c);
 
         /*
         //description: 
