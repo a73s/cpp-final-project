@@ -9,10 +9,14 @@
 #include <iostream>
 #include <cstdlib>
 
+//-----====== Static member variables =====-----
 
 int robber::collectiveBagValue = 0;
 
 int robber::currentId = 0;
+
+
+//-----====== Constructors =====-----
 
 
 robber::robber(const int X, const int Y, const bool isGreedyInput){
@@ -26,6 +30,7 @@ robber::robber(const int X, const int Y, const bool isGreedyInput){
             robberY = Y;
             isGreedy = isGreedyInput;
             id = ++currentId;//increment then assign id
+            active = true;
 
         }else{
 
@@ -39,6 +44,9 @@ robber::robber(const int X, const int Y, const bool isGreedyInput){
 
     return;
 }
+
+
+//-----====== Functions =====-----
 
 bool robber::pickUpLoot(jewel j){
 
@@ -169,3 +177,24 @@ void robber::move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZ
 }
 
 
+//-----====== Getters and setters =====-----
+
+int robber::getX(){
+
+    return robberX;
+}
+
+int robber::getY(){
+
+    return robberY;
+}
+
+bool robber::isActive(){
+
+    return active;
+}
+
+bool robber::isInitialized(){
+
+    return initialized;
+}

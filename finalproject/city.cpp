@@ -26,6 +26,38 @@ void city::updateLetterGrids(){
         }
     }
 
+    for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            robberGrid1[i][j] = ' ';
+        }
+    }
+
+    for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            robberGrid2[i][j] = ' ';
+        }
+    }
+
+    for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            robberGridGreedy1[i][j] = ' ';
+        }
+    }
+
+    for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            robberGridGreedy2[i][j] = ' ';
+        }
+    }
+
     //put the jewels back on the grid
     for(int i = 0; i < NUM_STARTING_JEWELS; i++){
 
@@ -39,9 +71,40 @@ void city::updateLetterGrids(){
     }
 
     //put robbers back on the grid
+    for(int i = 0; i < NUM_STARTING_ROBBERS; i++){
 
+        robber tempRobber = robbers[i];
+
+        if(!tempRobber.active && tempRobber.initialized){
+
+            switch(i){
+                case 0:{
+
+                    robberGrid1[tempRobber.getX()][tempRobber.getY()] = 'p';
+                    break;
+                }
+                case 1:{
+
+                    robberGrid2[tempRobber.getX()][tempRobber.getY()] = 'p';
+                    break;
+                }
+                case 2:{
+                    
+                    robberGridGreedy1[tempRobber.getX()][tempRobber.getY()] = 'p';
+                    break;
+                }
+                case 3:{
+                    
+                    robberGridGreedy2[tempRobber.getX()][tempRobber.getY()] = 'p';
+                    break;
+                }
+            }
+        }
+    }
 
     //put cops back on the grid
+
+    
 }
 
 

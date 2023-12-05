@@ -20,8 +20,7 @@ class robber{
 
     public:
 
-
-        
+        // -----===== constructors =====------
 
         robber(){}//default constructor
 
@@ -30,6 +29,9 @@ class robber{
         //post: returns 1 if there is an error, 0 otherwise, changes robberX and robberY to the desired values. can be run again if there is an error
         robber(const int X, const int Y, const bool isGreedyInput);
         
+
+        //-----====== functions =====-----
+
         //description: picks up a jewel thats in the same place as the robber
         //pre: a jewel 
         //post: returns true if theres an error, otherwise return 0. adds the gem to the robber's bag
@@ -38,8 +40,8 @@ class robber{
         //description: moves the robber by 1 space in a random valid direction
         //pre: robber should be initialized
         //post: 
-        //void move();
         void move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZE]);
+
 
         /*
         //description: 
@@ -48,21 +50,35 @@ class robber{
         void getArrested()
         */
 
+
+        //-----====== Getters and setters =====-----
+
+        int getX();
+
+        int getY();
+
+        bool isActive();
+
+        bool isInitialized();
+
+        
+      
+
     private:
 
 
-        int id;//increment then assign id
-        
-        bool initialized = false;
+        int id;
+
         int robberX = -1, robberY = -1;//x values start at 0 at the left and go to GRID_SIZE - 1 at the right, same for y values except top to bottom
         int gemBag = 0;
         int bagValue = 0;
 
         static int currentId;
         static int collectiveBagValue;
-    
+
         bool active = true;
-        bool isGreedy = 0;//50/50 chance of being greedy if the default constructor is run
+        bool initialized = false;
+        bool isGreedy = 0;//normal by default
 
 };
 
