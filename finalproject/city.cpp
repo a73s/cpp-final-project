@@ -75,7 +75,7 @@ void city::updateLetterGrids(){
 
         robber tempRobber = robbers[i];
 
-        if(!tempRobber.isActive() && tempRobber.isInitialized()){
+        if(tempRobber.isActive() && tempRobber.isInitialized()){
 
             switch(i){
                 case 0:{
@@ -90,12 +90,12 @@ void city::updateLetterGrids(){
                 }
                 case 2:{
                     
-                    robberGridGreedy1[tempRobber.getX()][tempRobber.getY()] = 'p';
+                    robberGridGreedy1[tempRobber.getX()][tempRobber.getY()] = 'r';
                     break;
                 }
                 case 3:{
                     
-                    robberGridGreedy2[tempRobber.getX()][tempRobber.getY()] = 'p';
+                    robberGridGreedy2[tempRobber.getX()][tempRobber.getY()] = 'r';
                     break;
                 }
             }
@@ -168,9 +168,9 @@ void city::printGrid(){
     cout << "----------------------------------------------------------" << endl;
     cout << "X" << endl;  
     cout << "Key: " << endl;
-    cout << "       robber: \'p\'" << "     S" << endl;
+    cout << "       robber: \'p\'" << "     N" << endl;
     cout << "greedy robber: \'r\'" << "     |" << endl;
-    cout << "        jewel: \'j\'" << " E---|---W" << endl;
+    cout << "        jewel: \'j\'" << " W---|---E" << endl;
     cout << "          cop: \'c\'" << "     |" << endl;
-    cout << "                       N" << endl;
+    cout << "                       S" << endl;
 }
