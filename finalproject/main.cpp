@@ -23,7 +23,8 @@ if(DEBUG){
 
 /*
 to do 
-make the robber class modify the city grid when the robber moves
+change random seed back to 100
+add police to many member functions when police class is complete 
 */
 
 #include "jewel.h"
@@ -94,11 +95,23 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGrid[newRobberX][newRobberY] == 'r');//if there is a jewel or a robber in that spot
+            if(DEBUG){
+                
+                cout << "DEBUG(main): generating random for robber #" << i << endl;
+                cout << "coordinates X, Y: " << newRobberX << " " << newRobberY << endl;
+            }
+
+        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');//if there is a jewel or a robber in that spot
 
         robber newRobber(newRobberX, newRobberY, 0);
         city.robbers[i-1] = newRobber;
-        city.robberGrid[newRobberX][newRobberY] = 'p';
+
+        if(i == 1){
+            city.robberGrid1[newRobberX][newRobberY] = 'p';
+        }
+        if(i == 2){
+            city.robberGrid2[newRobberX][newRobberY] = 'p';
+        }
     }
 
     //greedy robbers
@@ -116,15 +129,48 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid[newRobberX][newRobberY] == 'p' || city.robberGridGreedy[newRobberX][newRobberY] == 'r');
+        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');
 
         robber newRobber(newRobberX, newRobberY, 1);
         city.robbers[i-1] = newRobber;
-        city.robberGridGreedy[newRobberX][newRobberY] = 'r';
+        
+        if(i == 3){
+            city.robberGridGreedy1[newRobberX][newRobberY] = 'r';
+        }
+        if(i == 4){
+            city.robberGridGreedy2[newRobberX][newRobberY] = 'r';
+        }
+
     }
 
+
+
+    //-----===== Generate cops =====-----
+
+
+
+
+
+
+
+    //Print the starting grid
     cout << "The starting grid: " << endl;
     city.printGrid();
+
+
+    /*
+    bool moveAgain;
+    
+    //some test code
+    do{
+
+        city.robbers[0].move(&city);
+        city.printGrid();
+        cout << "Move again?(1/0) ";
+        cin >> moveAgain;
+
+    }while(moveAgain);
+    */
 
 
 

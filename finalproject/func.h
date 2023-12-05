@@ -41,12 +41,6 @@ namespace myTemplates{
 //post: returns the random number within the parameters
 int generateRand(const int & min = 0, const int & max = 9);
 
-//description: generates a random number in the range (inclusive)
-//pre:input 2 integers, otherwise will set to default, srand is assumed to be pre-seeded in main
-//post: returns the random number within the parameters
-unsigned long int generateBigRand(const unsigned long int & min = 0, const unsigned long int & max = 9);
-
-
 
 
 

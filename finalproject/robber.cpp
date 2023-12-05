@@ -5,17 +5,22 @@
 
 #include "func.h"
 #include "robber.h"
-
+#include "city.h"
 #include <iostream>
 #include <cstdlib>
 
+
+//-----====== Static member variables =====-----
 
 int robber::collectiveBagValue = 0;
 
 int robber::currentId = 0;
 
 
-robber::robber(const int X, const int Y, const bool isGreedyInput){
+//-----====== Constructors =====-----
+
+
+robber::robber(const int X, const int Y, const bool isGreedyInput, const bool isActive){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
@@ -26,6 +31,7 @@ robber::robber(const int X, const int Y, const bool isGreedyInput){
             robberY = Y;
             isGreedy = isGreedyInput;
             id = ++currentId;//increment then assign id
+            active = isActive;
 
         }else{
 
@@ -39,6 +45,9 @@ robber::robber(const int X, const int Y, const bool isGreedyInput){
 
     return;
 }
+
+
+//-----====== Functions =====-----
 
 bool robber::pickUpLoot(jewel j){
 
@@ -75,13 +84,12 @@ bool robber::pickUpLoot(jewel j){
 }
 
 
-//void robber::move(){
-void robber::move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZE]){
+void robber::move(city* c){
 
-    if(!initialized){//do not run function if the robber is not initialized
+    if(!initialized || !active){//do not run function if the robber is not initialized
 
         if(DEBUG){
-            cout << "DEBUG(robber.move): robber not initialized, not moved" << endl;
+            cout << "DEBUG(robber.move): robber not initialized or not active, therefore not moved" << endl;
         }
 
         return;
@@ -151,13 +159,16 @@ void robber::move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZ
 
     }while(!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1));//redo if it would move us out of bounds
 
-    if(robberGrid[robberX][robberY] == 'p' || robberGridGreedy[robberX][robberY] == 'r'){//if theres another robber in that spot
+    /*
+    if(robberGrid1[robberX][robberY] == 'p' || robberGridGreedy1[robberX][robberY] == 'r'){//if theres another robber in that spot
 
 
     }
+    */
 
     robberX = newx;
     robberY = newy;
+
 
     if(DEBUG){
 
@@ -165,7 +176,31 @@ void robber::move(char robberGrid[][GRID_SIZE], char robberGridGreedy[][GRID_SIZ
         cout << "DEBUG: The new y is " << newy << endl;
     }
 
+    c->updateLetterGrids();//refresh the grid after move
+
     return;
 }
 
 
+
+//-----====== Getters and setters =====-----
+
+int robber::getX(){
+
+    return robberX;
+}
+
+int robber::getY(){
+
+    return robberY;
+}
+
+bool robber::isActive(){
+
+    return active;
+}
+
+bool robber::isInitialized(){
+
+    return initialized;
+}

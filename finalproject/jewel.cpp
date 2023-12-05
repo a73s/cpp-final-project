@@ -11,6 +11,7 @@
 
 using namespace std;
 
+//-----====== constructors =====-----
 
 jewel::jewel(const int X, const int Y, const int value){
 
@@ -35,6 +36,8 @@ jewel::jewel(const int X, const int Y, const int value){
 
     return;
 }
+
+//-----====== getters and setters =====-----
 
 int jewel::getX() const{
 
