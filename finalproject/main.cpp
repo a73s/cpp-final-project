@@ -25,6 +25,7 @@ if(DEBUG){
 to do 
 make the robber class modify the city grid when the robber moves
 change random seed back to 100
+add police to many member functions when police class is complete 
 */
 
 #include "jewel.h"
@@ -150,8 +151,7 @@ int main(){
     //Print the starting grid
     cout << "The starting grid: " << endl;
     city.printGrid();
-    city.updateLetterGrids();
-    city.printGrid();
+    //city.updateLetterGrids();
 
 
 
