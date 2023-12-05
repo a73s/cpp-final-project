@@ -24,7 +24,7 @@ if(DEBUG){
 /*
 to do 
 make the robber class modify the city grid when the robber moves
-/*
+*/
 
 #include "func.h"
 #include "city.h"
