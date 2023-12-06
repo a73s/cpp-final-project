@@ -75,29 +75,31 @@ void city::updateLetterGrids(){
 
         robber tempRobber = robbers[i];
 
-        if(tempRobber.isActive() && tempRobber.isInitialized()){
+        if(!tempRobber.isActive() || !tempRobber.isInitialized()){//if robber is not initialized or not active we skip that robber
 
-            switch(i){
-                case 0:{
+            continue;
+        }
 
-                    robberGrid1[tempRobber.getX()][tempRobber.getY()] = 'p';
-                    break;
-                }
-                case 1:{
+        switch(i){
+            case 0:{
 
-                    robberGrid2[tempRobber.getX()][tempRobber.getY()] = 'p';
-                    break;
-                }
-                case 2:{
+                robberGrid1[tempRobber.getX()][tempRobber.getY()] = 'p';
+                break;
+            }
+            case 1:{
+
+                robberGrid2[tempRobber.getX()][tempRobber.getY()] = 'p';
+                break;
+            }
+            case 2:{
                     
-                    robberGridGreedy1[tempRobber.getX()][tempRobber.getY()] = 'r';
-                    break;
-                }
-                case 3:{
+                robberGridGreedy1[tempRobber.getX()][tempRobber.getY()] = 'r';
+                break;
+            }
+            case 3:{
                     
-                    robberGridGreedy2[tempRobber.getX()][tempRobber.getY()] = 'r';
-                    break;
-                }
+                robberGridGreedy2[tempRobber.getX()][tempRobber.getY()] = 'r';
+                break;
             }
         }
     }

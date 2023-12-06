@@ -24,15 +24,13 @@ if(DEBUG){
 /*
 to do 
 change random seed back to 100
-add police to many member functions when police class is complete 
+add police to many member functions when police class is complete (check comments in main.cpp and city.cpp)
+make stuff happen when robbers meet in the same square
 */
 
 #include "jewel.h"
-
 #include "robber.h"
 #include "city.h"
-
-
 #include "func.h"
 #include "police.h"
 
@@ -129,6 +127,7 @@ int main(){
             newRobberX = generateRand(0, GRID_SIZE - 1);
             newRobberY = generateRand(0, GRID_SIZE - 1);
 
+        //do it again if there is a robber in the newly generated spot
         }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');
 
         robber newRobber(newRobberX, newRobberY, 1);

@@ -159,13 +159,6 @@ void robber::move(city* c){
 
     }while(!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1));//redo if it would move us out of bounds
 
-    /*
-    if(robberGrid1[robberX][robberY] == 'p' || robberGridGreedy1[robberX][robberY] == 'r'){//if theres another robber in that spot
-
-
-    }
-    */
-
     robberX = newx;
     robberY = newy;
 
