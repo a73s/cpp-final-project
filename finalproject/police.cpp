@@ -3,12 +3,13 @@
 //purpose: Final Project
 //file: police.cpp
 
+//Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
+
 #include "func.h"
 #include "police.h"
 
 #include <iostream>
 #include <cstdlib>
-
 
 
 

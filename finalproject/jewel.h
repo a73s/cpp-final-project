@@ -3,6 +3,8 @@
 //purpose: Final Project
 //file: jewel.h
 
+//Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
+
 #ifndef JEWEL_H
 #define JEWEL_H
 

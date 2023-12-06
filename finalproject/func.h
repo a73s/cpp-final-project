@@ -3,6 +3,8 @@
 //purpose: Final Project
 //file: func.h
 
+//Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
+
 #ifndef FUNC_H
 #define FUNC_H
 

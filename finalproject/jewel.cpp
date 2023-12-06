@@ -3,6 +3,8 @@
 //purpose: Final Project
 //file: jewel.cpp
 
+//Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
+
 #include "func.h"
 #include "jewel.h"
 
