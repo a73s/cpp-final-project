@@ -30,12 +30,12 @@ class police{
         //description: picks up a jewel thats in the same place as the robber
         //pre: a jewel 
         //post: returns true if theres an error, otherwise return 0. adds the gem to the robber's bag
-        bool pickUpLoot(jewel & j);
+        //bool pickUpLoot(jewel & j);
 
         //description: moves the robber by 1 space in a random valid direction
         //pre: robber should be initialized
         //post: 
-        void move();
+        //void move();
 
     private:
 

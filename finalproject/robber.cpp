@@ -51,35 +51,36 @@ robber::robber(const int X, const int Y, const bool isGreedyInput, const bool is
 
 //-----====== Functions =====-----
 
-bool robber::pickUpLoot(jewel j){
+bool robber::pickUpLoot(jewel & j){
 
-    int jewelX = j.getX();
-    int jewelY = j.getY();
-    int jewelVal = j.getValue();
+    cout << j.getX() << j.getY() << endl;
+    cout << j.isPickedUp << endl;
 
-    if(gemBag == 10){
-
-        return true;//return an error if gem bag is full
+    if(gemBag >= 10){
 
         if(DEBUG){
-            cout << "Warning(robber.pickUpLoot()): Gem bag full, jewel not collected" << endl;
+            cout << "DEBUG:Warning(robber.pickUpLoot()): Gem bag full, jewel not collected" << endl;
         }
+
+        return true;//return an error if gem bag is full
     }
 
-    if(jewelX == robberX && jewelY == robberY){//if in the same location
+    if(robberX == j.getX() && robberY == j.getY()){//if in the same location
 
         gemBag++;
-        bagValue += jewelVal;
-        collectiveBagValue += jewelVal;
+        bagValue += j.getValue();
+        collectiveBagValue += j.getValue();
+        j.isPickedUp = true;
+        return false;
 
     }else{
 
-        return true;//return error if not in the same location
-
         if(DEBUG){
 
-            cout << "Error(robber.pickUpLoot()): robber and jewel not in the same place" << endl;
+            cout << "DEBUG:Error(robber.pickUpLoot()): robber and jewel not in the same place" << endl;
         }
+        
+        return true;//return error if not in the same location
     }
 
     return false;
@@ -87,6 +88,14 @@ bool robber::pickUpLoot(jewel j){
 
 
 void robber::move(city* c){
+
+    if(immobilized > 0){
+
+        cout << "robber immobilized" << endl;
+        immobilized--;
+
+        return;
+    }
 
     if(!initialized || !active){//do not run function if the robber is not initialized
 
@@ -169,6 +178,39 @@ void robber::move(city* c){
 
         cout << "DEBUG: The new x is " << newx << endl;
         cout << "DEBUG: The new y is " << newy << endl;
+    }
+
+    c->updateLetterGrids();//refresh the grid after move
+
+    bool picked = false;
+    bool pickupError;
+    
+    //attempt to pick up every jewel, if the jewel is not in the same location then it will not work
+    if(moveRightAmount != 0 || moveDownAmount != 0){//if moved at all
+
+        for(int i = 0; i < NUM_STARTING_JEWELS; i++){
+
+            pickupError = pickUpLoot(c->jewels[i]);
+        
+
+            if(!pickupError){
+
+                picked = true;
+            }
+        }
+    }
+
+
+
+    if(picked){
+        movesSinceJewel++;
+        cout << "jem picked up" << endl;
+    }
+
+    if(movesSinceJewel > 4){
+
+        immobilized = 2;
+        movesSinceJewel = 0;
     }
 
     c->updateLetterGrids();//refresh the grid after move

@@ -53,7 +53,7 @@ int jewel::getY() const{
 
 int jewel::getValue() const{
 
-    return originalY;
+    return jewelValue;
 }
 
 

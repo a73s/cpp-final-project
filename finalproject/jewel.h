@@ -20,6 +20,8 @@ class jewel{
 
     public:
 
+        friend class robber;
+
         //-----====== Constructors =====-----
 
         jewel(){}
@@ -47,11 +49,14 @@ class jewel{
         //post: returns the value og the jewel
         int getValue() const;
 
-        bool isPickedUp = false;
+        bool pickedUp() const{return isPickedUp;}
+
+
         bool initialized = false;
 
     private: 
 
+        bool isPickedUp = false;
         int jewelValue = -1;
         int originalX = -1, originalY = -1;//x values start at 0 at the left and go to GRID_SIZE - 1 at the right, same for y values except top to bottom
     

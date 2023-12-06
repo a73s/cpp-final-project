@@ -63,11 +63,9 @@ void city::updateLetterGrids(){
     //put the jewels back on the grid
     for(int i = 0; i < NUM_STARTING_JEWELS; i++){
 
-        jewel tempJewel = jewels[i];
+        if(!jewels[i].pickedUp() && jewels[i].initialized){
 
-        if(!tempJewel.isPickedUp && tempJewel.initialized){
-
-            jewelGrid[tempJewel.getX()][tempJewel.getY()] = 'j';
+            jewelGrid[jewels[i].getX()][jewels[i].getY()] = 'j';
         }
 
     }
