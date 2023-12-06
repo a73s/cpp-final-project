@@ -53,8 +53,10 @@ robber::robber(const int X, const int Y, const bool isGreedyInput, const bool is
 
 bool robber::pickUpLoot(jewel & j){
 
-    cout << j.getX() << j.getY() << endl;
-    cout << j.isPickedUp << endl;
+    if(DEBUG){
+        cout << j.getX() << j.getY() << endl;
+        cout << j.isPickedUp << endl;
+    }
 
     if(gemBag >= 10){
 
@@ -191,7 +193,6 @@ void robber::move(city* c){
         for(int i = 0; i < NUM_STARTING_JEWELS; i++){
 
             pickupError = pickUpLoot(c->jewels[i]);
-        
 
             if(!pickupError){
 
@@ -200,11 +201,9 @@ void robber::move(city* c){
         }
     }
 
-
-
     if(picked){
         movesSinceJewel++;
-        cout << "jem picked up" << endl;
+        cout << "Gem picked up by robber id: " << id << endl;
     }
 
     if(movesSinceJewel > 4){

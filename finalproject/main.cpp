@@ -43,7 +43,7 @@ using namespace std;
 
 int main(){
 
-    srand(time(NULL));
+    srand(100);
 
     city city;
 
