@@ -26,7 +26,7 @@ if(DEBUG){
 /*
 to do 
 change random seed back to 100
-make stuff happen when robbers meet in the same square
+make stuff happen when characters meet in the same square
 */
 
 #include "jewel.h"
