@@ -162,7 +162,7 @@ void generateStartingBoard(city & city){
 
 
 
-float distance(robber & robber, police & cop){
+float distance(const int & fistX, const int & firstY, const int & secondX, const int & secondY){
 
     // distance = norm(u-v), linear algebra ftw, however this assumes that the grid is continuous, ill just hope this doesnt cause issues later
 

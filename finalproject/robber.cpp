@@ -176,9 +176,18 @@ void robber::move(city* c){
 
         bool doGreedyMove = (isGreedy && isAJewelClose(c) && !(gemBag == 10));//do the greedy move only if you are greedy, there is a jewel clonse, and you have room in your bag
 
-        if(doGreedyMove){
+        if(isGreedy){
 
-            doAgain = (!(c->isValidMove(newx, newy)) || !(c->jewelGrid[newx][newy] == 'j'));//if greedy and can fit another gem
+            if(isAJewelClose && !(gemBag == 10)){
+
+                doAgain = (!(c->isValidMove(newx, newy)) || !(c->jewelGrid[newx][newy] == 'j'));//if greedy and can fit another gem
+            }
+
+            if(gemBag == 10){
+
+                doAgain = ();
+            }
+
         }
         else{
 

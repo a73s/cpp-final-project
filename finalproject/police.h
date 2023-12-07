@@ -49,10 +49,6 @@ class police{
 
         bool isInitialized(){return initialized;}
 
-        //-----====== Friends =====------  
-
-        //friend distance(robber & robber, police & cop);
-
     private:
 
         bool active = false;
