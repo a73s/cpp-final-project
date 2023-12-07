@@ -144,8 +144,6 @@ int main(){
 
     }
 
-
-
     //-----===== Generate cops =====-----
 
 
@@ -153,6 +151,9 @@ int main(){
 
 
 
+    //-----===== Welcome message =====-----
+
+    cout << "-----===== The Urban Jewel Heist =====-----" << endl;
 
     //Print the starting grid
     cout << "The starting grid: " << endl;
