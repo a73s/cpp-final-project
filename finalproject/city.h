@@ -37,6 +37,11 @@ class city{
     //post: 
     void printGrid();
 
+    //description: checks to see if the future position is within the area of the grid
+    //pre: pass coordinates to check if that location is valid
+    //post: returns true if in the grid otherwits false
+    bool isValidMove(const int & X, const int & Y) const;
+
     int numJewels = 0;
 
     //each grid starts at x=0 and y=0 in the top left and ends at x=GRID_SIZE-1 and y=GRID_SIZE-1 in the bottom right

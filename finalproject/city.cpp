@@ -176,3 +176,18 @@ void city::printGrid(){
     cout << "          cop: \'c\'" << "                                  S" << endl;
     cout << endl;
 }
+
+
+
+bool city::isValidMove(const int & X, const int & Y) const{
+
+    if(X < GRID_SIZE && X > -1 && Y < GRID_SIZE && Y > -1){
+
+        return true;
+    }
+
+    return false;
+}
+
+
+

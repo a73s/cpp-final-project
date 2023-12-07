@@ -22,11 +22,11 @@ int robber::currentId = 0;
 //-----====== Constructors =====-----
 
 
-robber::robber(const int X, const int Y, const bool isGreedyInput, const bool isActive){
+robber::robber(city* city, const int X, const int Y, const bool isGreedyInput, const bool isActive){
 
     if(!initialized){//after the first run we will only run if there was an error last time
 
-        if(X < GRID_SIZE && Y < GRID_SIZE && X > -1 && Y > -1){//if the coordinates are within the grid and the value is positive
+        if(city->isValidMove(X, Y)){//if the coordinates are within the grid and the value is positive
 
             initialized = true;
             robberX = X;
@@ -53,10 +53,6 @@ robber::robber(const int X, const int Y, const bool isGreedyInput, const bool is
 
 bool robber::pickUpLoot(jewel & j){
 
-    if(DEBUG){
-        cout << j.getX() << j.getY() << endl;
-        cout << j.isPickedUp << endl;
-    }
 
     if(gemBag >= 10){
 
@@ -110,9 +106,14 @@ void robber::move(city* c){
 
     int moveDownAmount = 0, moveRightAmount = 0;
     int newx = robberX, newy = robberY;
-    bool doAgain;
+    bool doAgain;//this is for checking if we need to do the do-while loop again, i use this to differentiate between greedy and non greedy robbers
 
     do{//we can only get away with using a do while loop because there is never a situation where there is not an open space to move to
+        
+        if(DEBUG){
+
+            cout << "DEBUG(robber.move):finding coordinates for robber move" << endl;
+        }
 
         int choice = generateRand(0,7);
 
@@ -173,18 +174,15 @@ void robber::move(city* c){
 
         //EXTRA CREDIT PART 1: move to space with jewel if there is a space with a jewel
 
-        if(isGreedy){
+        bool doGreedyMove = (isGreedy && isAJewelClose(c) && !(gemBag == 10));//do the greedy move only if you are greedy, there is a jewel clonse, and you have room in your bag
 
-            if(isAJewelClose(c) && !(gemBag == 10)){
+        if(doGreedyMove){
 
-                doAgain = (!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1) || !(c->jewelGrid[newx][newy] == 'j'));//if greedy and can fit another gem 
-            }else{
+            doAgain = (!(c->isValidMove(newx, newy)) || !(c->jewelGrid[newx][newy] == 'j'));//if greedy and can fit another gem
+        }
+        else{
 
-                doAgain = !(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1);//same as non greedy
-            }
-        }else{
-
-            doAgain = !(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1);//for non greedy
+            doAgain = !(c->isValidMove(newx, newy));//for non greedy
         }
 
     }while(doAgain);//redo if it would move us out of bounds
@@ -241,35 +239,35 @@ void robber::move(city* c){
 
 bool robber::isAJewelClose(city* city){
 
-    if(city->jewelGrid[robberX - 1][robberY - 1] == 'j'){//north west of robber
+    if(city->jewelGrid[robberX - 1][robberY - 1] == 'j' && city->isValidMove(robberX-1, robberY-1)){//north west of robber
 
         return true;
     }
-    if(city->jewelGrid[robberX - 1][robberY - 0] == 'j'){//north of robber
+    if(city->jewelGrid[robberX - 1][robberY - 0] == 'j' && city->isValidMove(robberX-1, robberY-0)){//north of robber
 
         return true;
     }
-    if(city->jewelGrid[robberX - 1][robberY + 1] == 'j'){//north east of robber
+    if(city->jewelGrid[robberX - 1][robberY + 1] == 'j' && city->isValidMove(robberX-1, robberY+1)){//north east of robber
 
         return true;
     }
-    if(city->jewelGrid[robberX - 0][robberY - 1] == 'j'){//west of robber
+    if(city->jewelGrid[robberX - 0][robberY - 1] == 'j' && city->isValidMove(robberX+0, robberY-1)){//west of robber
 
         return true;
     }
-    if(city->jewelGrid[robberX - 0][robberY + 1] == 'j'){//east of robber
+    if(city->jewelGrid[robberX - 0][robberY + 1] == 'j' && city->isValidMove(robberX-0, robberY+1)){//east of robber
 
         return true;
     }
-    if(city->jewelGrid[robberX + 1][robberY - 1] == 'j'){//south west of robber
+    if(city->jewelGrid[robberX + 1][robberY - 1] == 'j' && city->isValidMove(robberX+1, robberY-1)){//south west of robber
 
         return true;
     }
-    if(city->jewelGrid[robberX + 1][robberY - 0] == 'j'){//south of robber
+    if(city->jewelGrid[robberX + 1][robberY - 0] == 'j' && city->isValidMove(robberX+1, robberY-0)){//south of robber
 
         return true;
     }
-    if(city->jewelGrid[robberX + 1][robberY + 1] == 'j'){//south east of robber
+    if(city->jewelGrid[robberX + 1][robberY + 1] == 'j' && city->isValidMove(robberX+1, robberY+1)){//south east of robber
 
         return true;
     }
