@@ -59,20 +59,20 @@ int main(){
 
 
 
-    /*
+    ///*
     bool moveAgain;
     //some test code
     do{
 
         city.polices[0].move(&city);
-        city.robbers[0].move(&city);
+        city.robbers[2].move(&city);
         city.printGrid();
 
         cout << "Move again?(1/0) ";
         cin >> moveAgain;
 
     }while(moveAgain);
-    */
+    //*/
 
 
 

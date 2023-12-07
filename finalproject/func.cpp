@@ -168,9 +168,8 @@ float distance(const int & fistX, const int & firstY, const int & secondX, const
 
     //y = u - v
 
-    float yX = cop.getX() - robber.getX();
-    float yY = cop.getY() - robber.getY();
-
+    float yX = firstX - secondX;
+    float yY = firstY - secondY;
     //norm(y) = sqrt(dot-prod(y,y))
 
     return sqrt((yX * yX)+(yY * yY));
