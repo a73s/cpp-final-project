@@ -38,122 +38,21 @@ make stuff happen when robbers meet in the same square
 
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 int main(){
 
-    srand(100);
+    srand(time(NULL));
+    
+    //-----===== Welcome message =====-----
+    
+    cout << "-----===== The Urban Jewel Heist =====-----" << endl;
 
     city city;
 
-    //generate jewels onto the grid
-    for(int i = 1; i <= NUM_STARTING_JEWELS; i++){
-
-        if(DEBUG){
-
-            cout << "DEBUG(main): initializing jewel #" << i << endl;
-        }
-
-        int newJewelX, newJewelY;
-
-        do{
-            
-            newJewelX = generateRand(0, GRID_SIZE - 1);
-            newJewelY = generateRand(0, GRID_SIZE - 1);
-
-            if(DEBUG){
-                
-                cout << "DEBUG(main): generating random for jewel #" << i << endl;
-                cout << "coordinates X, Y: " << newJewelX << " " << newJewelY << endl;
-            }
-            
-        }while(city.jewelGrid[newJewelX][newJewelY] == 'j');//make sure that theres only one jewel in each spot/ that we have 30 total
-
-        jewel newJewel(newJewelX, newJewelY, generateRand(JEWEL_MIN_VALUE, JEWEL_MAX_VALUE));//initialize jewel objects
-
-        city.jewels[i-1] = newJewel;
-        city.updateLetterGrids();
-    }
-
-    
-
-    //-----===== Create Robbers =====-----
-
-    //regular robbers
-    for(int i = 1; i <= NUM_STARTING_ROBBERS-2; i++){
-
-        if(DEBUG){
-
-            cout << "DEBUG(main): creating robber #" << i << endl;
-        }
-
-        int newRobberX, newRobberY;
-
-        do{
-
-            newRobberX = generateRand(0, GRID_SIZE - 1);
-            newRobberY = generateRand(0, GRID_SIZE - 1);
-
-            if(DEBUG){
-                
-                cout << "DEBUG(main): generating random for robber #" << i << endl;
-                cout << "coordinates X, Y: " << newRobberX << " " << newRobberY << endl;
-            }
-
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');//if there is a jewel or a robber in that spot
-
-        robber newRobber(newRobberX, newRobberY, 0);
-        city.robbers[i-1] = newRobber;
-
-        if(i == 1){
-            city.robberGrid1[newRobberX][newRobberY] = 'p';
-        }
-        if(i == 2){
-            city.robberGrid2[newRobberX][newRobberY] = 'p';
-        }
-    }
-
-    //greedy robbers
-    for(int i = 3; i <= NUM_STARTING_ROBBERS; i++){
-
-        if(DEBUG){
-
-            cout << "DEBUG(main): creating greedy robber #" << i << endl;
-        }
-
-        int newRobberX, newRobberY;
-
-        do{
-
-            newRobberX = generateRand(0, GRID_SIZE - 1);
-            newRobberY = generateRand(0, GRID_SIZE - 1);
-
-        //do it again if there is a robber in the newly generated spot
-        }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');
-
-        robber newRobber(newRobberX, newRobberY, 1);
-        city.robbers[i-1] = newRobber;
-        
-        if(i == 3){
-            city.robberGridGreedy1[newRobberX][newRobberY] = 'r';
-        }
-        if(i == 4){
-            city.robberGridGreedy2[newRobberX][newRobberY] = 'r';
-        }
-
-    }
-
-    //-----===== Generate cops =====-----
-
-
-
-
-
-
-    //-----===== Welcome message =====-----
-
-    cout << "-----===== The Urban Jewel Heist =====-----" << endl;
+    generateStartingBoard(city);
 
     //Print the starting grid
     cout << "The starting grid: " << endl;
