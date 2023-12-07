@@ -41,8 +41,8 @@ class robber{
         bool pickUpLoot(jewel & j);
 
         //description: moves the robber by 1 space in a random valid direction
-        //pre: robber should be initialized
-        //post: 
+        //pre: robber should be initialized and active
+        //post: moves the robber and redraws the board
         void move(city* c);
 
 
@@ -84,6 +84,11 @@ class robber{
         bool active = true;
         bool initialized = false;
         bool isGreedy = 0;//normal by default
+
+        //description: checks if there is a jewel within 1 move of the robber
+        //pre: input the city that the robber is on, input by pointer cuz its the only way to avoid bug (because both robber and city reference eachother, trust me i tried everything)
+        //post: returns true if there is a gem nearby
+        bool isAJewelClose(city* city);
 
 };
 
