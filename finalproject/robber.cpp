@@ -171,12 +171,20 @@ void robber::move(city* c){
         newx = robberX + moveRightAmount;
         newy = robberY + moveDownAmount;
 
-        if(isGreedy && isAJewelClose(c) && !(gemBag == 10)){
-            doAgain = (!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1) || !(c->jewelGrid[newx][newy] == 'j'));
-        }
-        if(!isGreedy){
+        //EXTRA CREDIT PART 1: move to space with jewel if there is a space with a jewel
 
-            doAgain = !(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1);
+        if(isGreedy){
+
+            if(isAJewelClose(c) && !(gemBag == 10)){
+
+                doAgain = (!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1) || !(c->jewelGrid[newx][newy] == 'j'));//if greedy and can fit another gem 
+            }else{
+
+                doAgain = !(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1);//same as non greedy
+            }
+        }else{
+
+            doAgain = !(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1);//for non greedy
         }
 
     }while(doAgain);//redo if it would move us out of bounds
@@ -213,7 +221,7 @@ void robber::move(city* c){
     if(picked){
         movesSinceJewel = 0;
         cout << "Gem picked up by robber id: " << id << endl;
-        
+
     }else{
 
         movesSinceJewel++;
@@ -265,6 +273,8 @@ bool robber::isAJewelClose(city* city){
 
         return true;
     }
+    
+    return false;
 }
 
 
