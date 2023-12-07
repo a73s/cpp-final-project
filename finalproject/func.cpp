@@ -80,7 +80,7 @@ void generateStartingBoard(city & city){
 
         }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');//if there is a jewel or a robber in that spot
 
-        robber newRobber(newRobberX, newRobberY, 0);
+        robber newRobber(&city, newRobberX, newRobberY, 0);
         city.robbers[i-1] = newRobber;
     }
 
@@ -105,7 +105,7 @@ void generateStartingBoard(city & city){
         //do it again if there is a robber in the newly generated spot
         }while(city.jewelGrid[newRobberX][newRobberY] == 'j' || city.robberGrid1[newRobberX][newRobberY] == 'p' || city.robberGridGreedy1[newRobberX][newRobberY] == 'r' || city.robberGrid2[newRobberX][newRobberY] == 'p' || city.robberGridGreedy2[newRobberX][newRobberY] == 'r');
 
-        robber newRobber(newRobberX, newRobberY, 1);
+        robber newRobber(&city, newRobberX, newRobberY, 1);
         city.robbers[i-1] = newRobber;
 
     }
