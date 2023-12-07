@@ -110,6 +110,7 @@ void robber::move(city* c){
 
     int moveDownAmount = 0, moveRightAmount = 0;
     int newx = robberX, newy = robberY;
+    bool doAgain;
 
     do{//we can only get away with using a do while loop because there is never a situation where there is not an open space to move to
 
@@ -170,7 +171,15 @@ void robber::move(city* c){
         newx = robberX + moveRightAmount;
         newy = robberY + moveDownAmount;
 
-    }while(!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1));//redo if it would move us out of bounds
+        if(isGreedy && isAJewelClose(c) && !(gemBag == 10)){
+            doAgain = (!(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1) || !(c->jewelGrid[newx][newy] == 'j'));
+        }
+        if(!isGreedy){
+
+            doAgain = !(newx < GRID_SIZE && newy < GRID_SIZE && newx > -1 && newy > -1);
+        }
+
+    }while(doAgain);//redo if it would move us out of bounds
 
     robberX = newx;
     robberY = newy;
@@ -202,8 +211,12 @@ void robber::move(city* c){
     }
 
     if(picked){
-        movesSinceJewel++;
+        movesSinceJewel = 0;
         cout << "Gem picked up by robber id: " << id << endl;
+        
+    }else{
+
+        movesSinceJewel++;
     }
 
     if(movesSinceJewel > 4){
@@ -215,6 +228,43 @@ void robber::move(city* c){
     c->updateLetterGrids();//refresh the grid after move
 
     return;
+}
+
+
+bool robber::isAJewelClose(city* city){
+
+    if(city->jewelGrid[robberX - 1][robberY - 1] == 'j'){//north west of robber
+
+        return true;
+    }
+    if(city->jewelGrid[robberX - 1][robberY - 0] == 'j'){//north of robber
+
+        return true;
+    }
+    if(city->jewelGrid[robberX - 1][robberY + 1] == 'j'){//north east of robber
+
+        return true;
+    }
+    if(city->jewelGrid[robberX - 0][robberY - 1] == 'j'){//west of robber
+
+        return true;
+    }
+    if(city->jewelGrid[robberX - 0][robberY + 1] == 'j'){//east of robber
+
+        return true;
+    }
+    if(city->jewelGrid[robberX + 1][robberY - 1] == 'j'){//south west of robber
+
+        return true;
+    }
+    if(city->jewelGrid[robberX + 1][robberY - 0] == 'j'){//south of robber
+
+        return true;
+    }
+    if(city->jewelGrid[robberX + 1][robberY + 1] == 'j'){//south east of robber
+
+        return true;
+    }
 }
 
 
