@@ -8,17 +8,13 @@
 #ifndef CITY_H
 #define CITY_H
 
-
-
-
 #include "func.h"
 #include "robber.h"
 #include "jewel.h"
+#include "police.h"
 
 #include <iostream>
 #include <cstdlib>
-
-//class robber;//fixes error, same as the pointer on the robber array
 
 //description: 
 //pre: 
@@ -61,6 +57,7 @@ class city{
 
     robber robbers[NUM_STARTING_ROBBERS] = {};// should be placed in this order: robber 1, robber 2, greedy robber 1, greedy robber 2
     jewel jewels[NUM_STARTING_JEWELS] = {};
+    police polices[NUM_STARTING_POLICE] = {};
 
     private:
 

@@ -26,7 +26,6 @@ if(DEBUG){
 /*
 to do 
 change random seed back to 100
-add police to many member functions when police class is complete (check comments in main.cpp and city.cpp)
 make stuff happen when robbers meet in the same square
 */
 
@@ -59,19 +58,19 @@ int main(){
     city.printGrid();
 
 
-    ///*
+    /*
     bool moveAgain;
     
     //some test code
     do{
 
-        city.robbers[2].move(&city);
+        city.polices[0].move(&city);
         city.printGrid();
         cout << "Move again?(1/0) ";
         cin >> moveAgain;
 
     }while(moveAgain);
-    //*/
+    */
 
 
 
