@@ -8,6 +8,10 @@
 #ifndef FUNC_H
 #define FUNC_H
 
+#include "jewel.h"
+#include "robber.h"
+#include "police.h"
+
 #include <string>
 
 using namespace std;
@@ -52,6 +56,11 @@ class city;//forward declaration of city so that we can use it in the next funct
 //pre: give an initialized city
 //post: adds jewels, robbers, and cops to the bored
 void generateStartingBoard(city & city);
+
+//description:calculates the distance between a cop an a robber
+//pre: pass a cop and a robber by reference
+//post: calculates the distance between the two
+float distance(robber & robber, police & cop);
 
 
 

@@ -15,6 +15,7 @@
 #include <cstdlib>
 
 class city;//fixes error
+class jewel;
 
 //description: 
 //pre: 
@@ -64,7 +65,10 @@ class robber{
 
         bool isInitialized();
 
-        
+
+        //-----====== Friends =====------  
+
+        //friend distance(robber & robber, police & cop);  
       
 
     private:
