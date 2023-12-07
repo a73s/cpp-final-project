@@ -197,7 +197,7 @@ void robber::move(city* c){
         cout << "DEBUG: The new y is " << newy << endl;
     }
 
-    c->updateLetterGrids();//refresh the grid after move
+    c->updateLetterGrids();//may be ok to remove this since it is updated later
 
     bool picked = false;
     bool pickupError;

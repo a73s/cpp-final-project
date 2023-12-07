@@ -20,6 +20,7 @@ const int NUM_STARTING_JEWELS = 30;
 const int JEWEL_MIN_VALUE = 10;
 const int JEWEL_MAX_VALUE = 1000;
 const int NUM_STARTING_ROBBERS = 4;
+const int NUM_STARTING_POLICE = 2;
 
 //-----===== FUNCTIONS =====-----
 

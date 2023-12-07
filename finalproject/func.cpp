@@ -29,7 +29,7 @@ void generateStartingBoard(city & city){
 
         if(DEBUG){
 
-            cout << "DEBUG(main): initializing jewel #" << i << endl;
+            cout << "DEBUG(genStartBoard): initializing jewel #" << i << endl;
         }
 
         int newJewelX, newJewelY;
@@ -41,7 +41,7 @@ void generateStartingBoard(city & city){
 
             if(DEBUG){
                 
-                cout << "DEBUG(main): generating random for jewel #" << i << endl;
+                cout << "DEBUG(genStartBoard): generating random for jewel #" << i << endl;
                 cout << "coordinates X, Y: " << newJewelX << " " << newJewelY << endl;
             }
             
@@ -62,7 +62,7 @@ void generateStartingBoard(city & city){
 
         if(DEBUG){
 
-            cout << "DEBUG(main): creating robber #" << i << endl;
+            cout << "DEBUG(genStartBoard): creating robber #" << i << endl;
         }
 
         int newRobberX, newRobberY;
@@ -74,7 +74,7 @@ void generateStartingBoard(city & city){
 
             if(DEBUG){
                 
-                cout << "DEBUG(main): generating random for robber #" << i << endl;
+                cout << "DEBUG(genStartBoard): generating random for robber #" << i << endl;
                 cout << "coordinates X, Y: " << newRobberX << " " << newRobberY << endl;
             }
 
@@ -92,7 +92,7 @@ void generateStartingBoard(city & city){
 
         if(DEBUG){
 
-            cout << "DEBUG(main): creating greedy robber #" << i << endl;
+            cout << "DEBUG(genStartBoard): creating greedy robber #" << i << endl;
         }
 
         int newRobberX, newRobberY;
@@ -115,9 +115,46 @@ void generateStartingBoard(city & city){
 
     //-----===== Generate cops =====-----
 
+    if(DEBUG){
+
+        cout << "DEBUG(genStartBoard): creating police #1" << endl;
+    }
+
+    int newPoliceX, newPoliceY;
+
+    do{
+
+        newPoliceX = generateRand(0, GRID_SIZE - 1);
+        newPoliceY = generateRand(0, GRID_SIZE - 1);
+
+    //do it again if there is a police in the newly generated spot
+    }while(city.jewelGrid[newPoliceX][newPoliceY] == 'j' || city.robberGrid1[newPoliceX][newPoliceY] == 'p' || city.robberGridGreedy1[newPoliceX][newPoliceY] == 'r' || city.robberGrid2[newPoliceX][newPoliceY] == 'p' || city.robberGridGreedy2[newPoliceX][newPoliceY] == 'r');
+
+    police newPolice(&city, newPoliceX, newPoliceY);
+    city.polices[0] = newPolice;
+    
+    city.updateLetterGrids();
 
 
 
+    //generate second cop
+    if(DEBUG){
+
+        cout << "DEBUG(genStartBoard): creating police # 2" << endl;
+    }
+
+    do{
+
+        newPoliceX = generateRand(0, GRID_SIZE - 1);
+        newPoliceY = generateRand(0, GRID_SIZE - 1);
+
+    //do it again if there is a police in the newly generated spot
+    }while(city.jewelGrid[newPoliceX][newPoliceY] == 'j' || city.robberGrid1[newPoliceX][newPoliceY] == 'p' || city.robberGridGreedy1[newPoliceX][newPoliceY] == 'r' || city.robberGrid2[newPoliceX][newPoliceY] == 'p' || city.robberGridGreedy2[newPoliceX][newPoliceY] == 'r' || city.copGrid1[newPoliceX][newPoliceY] == 'c');
+
+    police newPolice2(&city, newPoliceX, newPoliceY);
+    city.polices[1] = newPolice2;
+    
+    city.updateLetterGrids();
 
 }
 

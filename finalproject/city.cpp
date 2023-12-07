@@ -8,6 +8,7 @@
 #include "func.h"
 #include "city.h"
 #include "jewel.h"
+#include "police.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -60,6 +61,22 @@ void city::updateLetterGrids(){
         }
     }
 
+   for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            copGrid1[i][j] = ' ';
+        }
+    }
+
+    for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            copGrid2[i][j] = ' ';
+        }
+    } 
+
     //put the jewels back on the grid
     for(int i = 0; i < NUM_STARTING_JEWELS; i++){
 
@@ -106,7 +123,28 @@ void city::updateLetterGrids(){
 
     //put cops back on the grid
 
-    
+    for(int i = 0; i < NUM_STARTING_POLICE; i++){
+
+        police copCopy = polices[i];
+
+        if(!copCopy.isActive() || !copCopy.isInitialized()){
+
+            continue;
+        }
+
+        switch(i){
+            case 0:{
+
+                copGrid1[copCopy.getX()][copCopy.getY()] = 'c';
+                break;
+            }
+            case 1:{
+
+                copGrid2[copCopy.getX()][copCopy.getY()] = 'c';
+                break;
+            }
+        }
+    }
 }
 
 
@@ -155,7 +193,17 @@ void city::printGrid(){
                 tempNumThings++;
             }
 
-            //add thing to print cops
+            if(copGrid1[i][j] == 'c'){
+
+                cout << 'c';
+                tempNumThings++;
+            }
+
+            if(copGrid2[i][j] == 'c'){
+
+                cout << 'c';
+                tempNumThings++;
+            }
 
             for(int k = 0; k < 7 - tempNumThings; k++){//allows us to keep the spacing consistent
 
