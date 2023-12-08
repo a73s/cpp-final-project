@@ -27,6 +27,7 @@ if(DEBUG){
 /*
 to do 
 change random seed back to 100
+write function documentation
 make stuff happen when characters meet in the same square
 add grid of inactive robbers and cops and such
 */

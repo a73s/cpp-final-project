@@ -73,12 +73,12 @@ bool robber::pickUpLoot(jewel & j){
 
     }else{
 
-        /*
+        
         if(DEBUG){
 
             cout << "DEBUG:Error(robber.pickUpLoot()): robber and jewel not in the same place" << endl;
         }
-        */
+        
         
         return true;//return error if not in the same location
     }
@@ -271,13 +271,13 @@ void robber::move(city* c){
         cout << "DEBUG(robber.move): The new y is " << newy << endl;
     }
 
-    c->updateLetterGrids();//may be ok to remove this since it is updated later
+    c->updateLetterGrids();//refresh grid before checking for a jewel
 
     bool picked = false;
     bool pickupError;
     
     //attempt to pick up every jewel, if the jewel is not in the same location then it will not work
-    if(moveRightAmount != 0 || moveDownAmount != 0){//if moved at all
+    if(!(moveRightAmount == 0) && !(moveDownAmount == 0) && c->jewelGrid[robberX][robberY] == 'j'){//if moved at all
 
         for(int i = 0; i < NUM_STARTING_JEWELS; i++){
 
@@ -288,6 +288,9 @@ void robber::move(city* c){
                 picked = true;
             }
         }
+
+        c->updateLetterGrids();//refresh the grid after collecting jewel
+
     }
 
     if(picked){
@@ -304,8 +307,6 @@ void robber::move(city* c){
         immobilized = 2;
         movesSinceJewel = 0;
     }
-
-    c->updateLetterGrids();//refresh the grid after move
 
     return;
 }

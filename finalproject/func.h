@@ -49,7 +49,6 @@ namespace myTemplates{
 //post: returns the random number within the parameters
 int generateRand(const int & min = 0, const int & max = 9);
 
-
 class city;//forward declaration of city so that we can use it in the next function
 
 //description: generates the starting state of the city
