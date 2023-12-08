@@ -73,10 +73,12 @@ bool robber::pickUpLoot(jewel & j){
 
     }else{
 
+        /*
         if(DEBUG){
 
             cout << "DEBUG:Error(robber.pickUpLoot()): robber and jewel not in the same place" << endl;
         }
+        */
         
         return true;//return error if not in the same location
     }
@@ -109,7 +111,10 @@ void robber::move(city* c){
     bool doAgain;//this is for checking if we need to do the do-while loop again, i use this to differentiate between greedy and non greedy robbers
 
     do{//we can only get away with using a do while loop because there is never a situation where there is not an open space to move to
-        
+
+        int allDistAreSameSafeguard = 0;
+
+
         if(DEBUG){
 
             cout << "DEBUG(robber.move):finding coordinates for robber move" << endl;
@@ -172,17 +177,84 @@ void robber::move(city* c){
         newx = robberX + moveRightAmount;
         newy = robberY + moveDownAmount;
 
-        //EXTRA CREDIT PART 1: move to space with jewel if there is a space with a jewel
+        //EXTRA CREDIT:
 
-        bool doGreedyMove = (isGreedy && isAJewelClose(c) && !(gemBag == 10));//do the greedy move only if you are greedy, there is a jewel clonse, and you have room in your bag
+        doAgain = false;//default state is that the candidtate coordinates are accepted
 
-        if(doGreedyMove){
+        if(isGreedy){//if we are greedy, change the condition in these ways
 
-            doAgain = (!(c->isValidMove(newx, newy)) || !(c->jewelGrid[newx][newy] == 'j'));//if greedy and can fit another gem
+            if(isAJewelClose(c) && !(gemBag == 10)){
+
+                doAgain = (!(c->jewelGrid[newx][newy] == 'j'));//if greedy and can fit another gem
+            }
+
+            if(gemBag == 10){//if gem bag full, compare the lowest cop distances
+
+                float currentMinDist;
+                float newMinDist;
+
+                float maxDist = distance(1,1,GRID_SIZE,GRID_SIZE);
+
+                currentMinDist = maxDist;//set to the current max distance given the board size
+
+
+                bool skippedAll = true;//safeguard against there being no valid cops
+                //get the minimum distance to a cop using the current coordinates
+                for(int i = 0; i < NUM_STARTING_POLICE; i++){
+
+                    if(!c->polices[i].isActive() || !c->polices[i].isInitialized()){//if the cop is invalid, skip him
+
+                        continue;
+                    }
+
+                    skippedAll = false;
+
+                    float tempDist = distance(robberX, robberY, c->polices[i].getX(), c->polices[i].getY());
+                    float tempDist2 = distance(newx, newy, c->polices[i].getX(), c->polices[i].getY());
+
+                    if(tempDist == 0 && DEBUG){
+
+                        cout << "Error(robber.move, greedy robber whos bag is full(moving tword a cop)): we are already on a cop, distance is 0" << endl;
+                    }
+
+                    if(tempDist < currentMinDist){
+
+                        currentMinDist = tempDist;
+                    }
+
+                    if(tempDist2 < currentMinDist){
+
+                        newMinDist = tempDist2;
+                    }
+                }
+            
+                doAgain = (currentMinDist <= newMinDist);//if the smallest distance for the candidate coordinates is greater thatn that of the current coordinates go again
+
+                if(currentMinDist == newMinDist){
+
+                    allDistAreSameSafeguard++;
+
+                    if(allDistAreSameSafeguard > 10){
+
+                        doAgain = false;
+                        allDistAreSameSafeguard = 0;
+                    }
+
+                    if(DEBUG){
+                        cout << "ERROR(robber.move, greedy robber whos bag is full(moving tword a cop)): The current and candidate distances are the same, trying again" << endl;
+                    }
+                }
+
+                if(skippedAll){
+
+                    cout << "ERROR(robber.move, greedy robber whos bag is full(moving tword a cop)): there is no active or initialized cop to compare with the current distance, something went wrong" << endl;
+                }
+            }
         }
-        else{
 
-            doAgain = !(c->isValidMove(newx, newy));//for non greedy
+        if(!(c->isValidMove(newx, newy))){//no matter what we cannot make an invalid move
+
+            doAgain = true;
         }
 
     }while(doAgain);//redo if it would move us out of bounds
@@ -193,8 +265,8 @@ void robber::move(city* c){
 
     if(DEBUG){
 
-        cout << "DEBUG: The new x is " << newx << endl;
-        cout << "DEBUG: The new y is " << newy << endl;
+        cout << "DEBUG(robber.move): The new x is " << newx << endl;
+        cout << "DEBUG(robber.move): The new y is " << newy << endl;
     }
 
     c->updateLetterGrids();//may be ok to remove this since it is updated later

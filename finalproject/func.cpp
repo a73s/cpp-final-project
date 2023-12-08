@@ -83,10 +83,9 @@ void generateStartingBoard(city & city){
 
         robber newRobber(&city, newRobberX, newRobberY, 0);
         city.robbers[i-1] = newRobber;
+
+        city.updateLetterGrids();
     }
-
-
-    city.updateLetterGrids();
 
     //greedy robbers
     for(int i = 3; i <= NUM_STARTING_ROBBERS; i++){
@@ -109,9 +108,9 @@ void generateStartingBoard(city & city){
         robber newRobber(&city, newRobberX, newRobberY, 1);
         city.robbers[i-1] = newRobber;
 
+        city.updateLetterGrids();
+
     }
-    
-    city.updateLetterGrids();
 
 
     //-----===== Generate cops =====-----
@@ -162,15 +161,14 @@ void generateStartingBoard(city & city){
 
 
 
-float distance(robber & robber, police & cop){
+float distance(const int & firstX, const int & firstY, const int & secondX, const int & secondY){
 
     // distance = norm(u-v), linear algebra ftw, however this assumes that the grid is continuous, ill just hope this doesnt cause issues later
 
     //y = u - v
 
-    float yX = cop.getX() - robber.getX();
-    float yY = cop.getY() - robber.getY();
-
+    float yX = firstX - secondX;
+    float yY = firstY - secondY;
     //norm(y) = sqrt(dot-prod(y,y))
 
     return sqrt((yX * yX)+(yY * yY));

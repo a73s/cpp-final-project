@@ -66,9 +66,6 @@ class robber{
         bool isInitialized();
 
 
-        //-----====== Friends =====------  
-
-        //friend distance(robber & robber, police & cop);  
       
 
     private:
