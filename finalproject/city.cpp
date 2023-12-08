@@ -6,8 +6,8 @@
 //Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
 
 #include "func.h"
-#include "city.h"
 #include "jewel.h"
+#include "city.h"
 #include "police.h"
 
 #include <iostream>
@@ -234,13 +234,13 @@ void city::printGrid(){
 
             if(inactiveCopGrid[i][j] == 'C'){
 
-                cout << 'C';
+                cout << 'B';
                 tempNumThings++;
             }
 
             if(inactiveRobberGrid[i][j] == 'R'){
 
-                cout << 'R';
+                cout << 'A';
                 tempNumThings++;
             }
 
@@ -261,6 +261,8 @@ void city::printGrid(){
     cout << "greedy robber: \'r\'" << "                              W---|---E" << endl;
     cout << "        jewel: \'j\'" << "                                  |" << endl;
     cout << "          cop: \'c\'" << "                                  S" << endl;
+    cout << "     Arrested: \'A\'" << endl;
+    cout << "       Bribed: \'B\'" << endl;
     cout << endl;
 }
 

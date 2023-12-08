@@ -14,7 +14,8 @@
 #include <iostream>
 #include <cstdlib>
 
-class city;//forward declaration of city
+class city;//forward declaration
+
 
 //description: 
 //pre: 
@@ -34,6 +35,10 @@ class police{
 
         void move(city* city);
 
+        void tryArrest(city* c);
+        
+        
+
         //description: picks up a jewel thats in the same place as the robber
         //pre: a jewel 
         //post: returns true if theres an error, otherwise return 0. adds the gem to the robber's bag
@@ -51,6 +56,8 @@ class police{
 
     private:
 
+        void arrest(robber & theRobber, city* c);
+
         bool active = false;
         bool initialized = false;
 
@@ -60,6 +67,7 @@ class police{
         int id;
         int policeX;
         int policeY;
+        int confiscatedValue;
     
 };
 

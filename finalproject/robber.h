@@ -24,6 +24,8 @@ class robber{
 
     public:
 
+
+        friend class police;
         // -----===== constructors =====------
 
         robber(){}//default constructor
@@ -75,6 +77,8 @@ class robber{
 
         int robberX = -1, robberY = -1;//x values start at 0 at the left and go to GRID_SIZE - 1 at the right, same for y values except top to bottom
         int gemBag = 0;
+
+        jewel *pickedJewels[10] = {};
         int bagValue = 0;
         int movesSinceJewel = 0;
         int immobilized = 0;

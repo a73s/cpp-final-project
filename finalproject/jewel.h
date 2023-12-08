@@ -13,6 +13,7 @@
 #include <iostream>
 #include <cstdlib>
 
+
 //description: 
 //pre: 
 //post: 
@@ -21,6 +22,7 @@ class jewel{
     public:
 
         friend class robber;
+        friend class police;
 
         //-----====== Constructors =====-----
 
@@ -57,6 +59,7 @@ class jewel{
     private: 
 
         bool isPickedUp = false;
+        bool confiscated = false;
         int jewelValue = -1;
         int originalX = -1, originalY = -1;//x values start at 0 at the left and go to GRID_SIZE - 1 at the right, same for y values except top to bottom
     

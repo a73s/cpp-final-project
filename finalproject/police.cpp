@@ -140,7 +140,58 @@ void police::move(city* c){
 
     c->updateLetterGrids();//refresh the grid after move
 
+
     return;
 }
 
 
+
+void police::arrest(robber & theRobber, city* c){
+
+    if(DEBUG){
+
+        cout << "DEBUG(police.arrest): we are arresting a robber" << endl;
+    }
+
+    theRobber.active = false;
+    int numconfiscated = 0;
+
+    if(theRobber.gemBag > 0){//prevent segfaults
+
+        for(int i = 0; i < theRobber.gemBag; i++){
+
+            //we gotta dereference every time we use this
+
+            if((theRobber.pickedJewels[i])->initialized){
+
+
+                theRobber.pickedJewels[i]->confiscated = true;
+                confiscatedValue += theRobber.pickedJewels[i]->getValue();
+                collectiveConfiscateValue += theRobber.pickedJewels[i]->getValue();
+                numconfiscated++;
+            }
+        }
+
+        cout << "Cop id #" << id << " arrested robber id #" << theRobber.id << " and confiscated " << numconfiscated << " jewels." << endl;
+
+        c->updateLetterGrids();//refresh the grid after arrest
+    }
+
+    return;
+}
+
+
+void police::tryArrest(city* c){
+
+    if(c->robberGrid1[policeX][policeY] == 'p' || c->robberGrid2[policeX][policeY] == 'p' || c->robberGridGreedy1[policeX][policeY] == 'r' || c->robberGridGreedy2[policeX][policeY] == 'r'){//if there is a robber in the same grid
+
+        for(int i = 0; i < NUM_STARTING_ROBBERS; i++){
+
+            if(c->robbers[i].getX() == policeX && c->robbers[i].getY() == policeY){//arrest all robbers in this spot
+
+                arrest(c->robbers[i], c);
+            }
+        }
+    }
+
+}

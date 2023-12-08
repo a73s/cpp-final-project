@@ -6,8 +6,12 @@
 //Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
 
 /*
-Note to grader: You can turn on debug options in func.h, there is a lot of output though
-all 30 points of extra credit are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
+Notes to grader:
+1. You can turn on debug options in func.h, there is a lot of output though
+2. all 30 points of extra credit are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
+3. I was getting errors in several placed where one class contained the second class but the second class also reference the first
+and the best solution I could find is to use pointers to refer back to the first class. I know we havent covered these in class and I kinda had to learn them on my own
+but this was the only way to make it work the way I wanted without too much pain
 */
 
 /*
@@ -28,6 +32,7 @@ if(DEBUG){
 to do 
 change random seed back to 100
 write function documentation
+make cops pick up jewels
 make stuff happen when characters meet in the same square
 */
 

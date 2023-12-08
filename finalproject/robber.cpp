@@ -8,6 +8,7 @@
 #include "func.h"
 #include "robber.h"
 #include "city.h"
+#include "jewel.h"
 #include <iostream>
 #include <cstdlib>
 
@@ -66,6 +67,7 @@ bool robber::pickUpLoot(jewel & j){
 
     if(robberX == j.getX() && robberY == j.getY()){//if in the same location
 
+        pickedJewels[gemBag] = &j;
         gemBag++;
         bagValue += j.getValue();
         collectiveBagValue += j.getValue();
@@ -278,7 +280,7 @@ void robber::move(city* c){
     bool pickupError;
     
     //attempt to pick up every jewel, if the jewel is not in the same location then it will not work
-    if(!(moveRightAmount == 0) && !(moveDownAmount == 0) && c->jewelGrid[robberX][robberY] == 'j'){//if moved at all
+    if(!(moveRightAmount == 0 && moveDownAmount == 0) && c->jewelGrid[robberX][robberY] == 'j'){//if moved at all
 
         for(int i = 0; i < NUM_STARTING_JEWELS; i++){
 
