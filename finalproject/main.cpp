@@ -60,7 +60,7 @@ int main(){
     cout << "The starting grid: " << endl;
     city.printGrid();
 
-    /*
+    ///*
     bool moveAgain;
     //some test code
     do{

@@ -55,6 +55,9 @@ class city{
     char copGrid1[GRID_SIZE][GRID_SIZE] = {};
     char copGrid2[GRID_SIZE][GRID_SIZE] = {};
 
+    char inactiveCopGrid[GRID_SIZE][GRID_SIZE] = {};
+    char inactiveRobberGrid[GRID_SIZE][GRID_SIZE] = {};
+
     robber robbers[NUM_STARTING_ROBBERS] = {};// should be placed in this order: robber 1, robber 2, greedy robber 1, greedy robber 2
     jewel jewels[NUM_STARTING_JEWELS] = {};
     police polices[NUM_STARTING_POLICE] = {};

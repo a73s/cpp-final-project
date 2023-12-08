@@ -16,7 +16,6 @@
 using namespace std;
 
 
-
 void city::updateLetterGrids(){
 
     //clear grids
@@ -75,7 +74,23 @@ void city::updateLetterGrids(){
 
             copGrid2[i][j] = ' ';
         }
+    }
+
+    for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            inactiveCopGrid[i][j] = ' ';
+        }
     } 
+
+    for(int i = 0; i < GRID_SIZE; i++){
+
+        for(int j = 0; j < GRID_SIZE; j++){
+
+            inactiveRobberGrid[i][j] = ' ';
+        }
+    }
 
     //put the jewels back on the grid
     for(int i = 0; i < NUM_STARTING_JEWELS; i++){
@@ -92,8 +107,14 @@ void city::updateLetterGrids(){
 
         robber tempRobber = robbers[i];
 
-        if(!tempRobber.isActive() || !tempRobber.isInitialized()){//if robber is not initialized or not active we skip that robber
+        if(!tempRobber.isInitialized()){//if robber is not initialized or not active we skip that robber
 
+            continue;
+        }
+
+        if(!tempRobber.isActive()){
+
+            inactiveRobberGrid[tempRobber.getX()][tempRobber.getY()] = 'R';
             continue;
         }
 
@@ -129,6 +150,12 @@ void city::updateLetterGrids(){
 
         if(!copCopy.isActive() || !copCopy.isInitialized()){
 
+            continue;
+        }
+
+        if(!copCopy.isActive()){
+
+            inactiveCopGrid[copCopy.getX()][copCopy.getY()] = 'C';
             continue;
         }
 
@@ -202,6 +229,18 @@ void city::printGrid(){
             if(copGrid2[i][j] == 'c'){
 
                 cout << 'c';
+                tempNumThings++;
+            }
+
+            if(inactiveCopGrid[i][j] == 'C'){
+
+                cout << 'C';
+                tempNumThings++;
+            }
+
+            if(inactiveRobberGrid[i][j] == 'R'){
+
+                cout << 'R';
                 tempNumThings++;
             }
 

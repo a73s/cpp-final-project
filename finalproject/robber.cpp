@@ -34,6 +34,7 @@ robber::robber(city* city, const int X, const int Y, const bool isGreedyInput, c
             isGreedy = isGreedyInput;
             id = ++currentId;//increment then assign id
             active = isActive;
+            //active = 0;
 
         }else{
 
