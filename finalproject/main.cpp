@@ -27,6 +27,7 @@ if(DEBUG){
 to do 
 change random seed back to 100
 make stuff happen when characters meet in the same square
+add grid of inactive robbers and cops and such
 */
 
 #include "jewel.h"
@@ -56,8 +57,6 @@ int main(){
     //Print the starting grid
     cout << "The starting grid: " << endl;
     city.printGrid();
-
-
 
     ///*
     bool moveAgain;

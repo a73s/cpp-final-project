@@ -60,7 +60,7 @@ void generateStartingBoard(city & city);
 //description:calculates the distance between a cop an a robber
 //pre: pass a cop and a robber by reference
 //post: calculates the distance between the two
-float distance(robber & robber, police & cop);
+float distance(const int & firstX, const int & firstY, const int & secondX, const int & secondY);
 
 
 
