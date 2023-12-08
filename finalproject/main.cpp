@@ -7,6 +7,7 @@
 
 /*
 Note to grader: You can turn on debug options in func.h, there is a lot of output though
+all 30 points of extra credit are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
 */
 
 /*
@@ -58,7 +59,7 @@ int main(){
     cout << "The starting grid: " << endl;
     city.printGrid();
 
-    ///*
+    /*
     bool moveAgain;
     //some test code
     do{

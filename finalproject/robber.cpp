@@ -252,6 +252,8 @@ void robber::move(city* c){
             }
         }
 
+        //END EXTRA CREDIT SECTION
+
         if(!(c->isValidMove(newx, newy))){//no matter what we cannot make an invalid move
 
             doAgain = true;
