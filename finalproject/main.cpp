@@ -32,8 +32,10 @@ if(DEBUG){
 to do 
 change random seed back to 100
 write function documentation
-make cops pick up jewels
-make stuff happen when characters meet in the same square
+make cops exchange jewels when in the same grid
+implement bribery for greedy robbers
+make outputs throught the game
+final thing: write main function
 */
 
 #include "jewel.h"
