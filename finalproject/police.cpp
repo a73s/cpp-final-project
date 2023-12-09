@@ -131,7 +131,6 @@ void police::move(city* c){
     policeX = newx;
     policeY = newy;
 
-
     if(DEBUG){
 
         cout << "DEBUG(police.move): The new x is " << newx << endl;
@@ -139,6 +138,26 @@ void police::move(city* c){
     }
 
     c->updateLetterGrids();//refresh the grid after move
+
+    //check for jewels, if so, make that jewel inactive
+
+    if(c->jewelGrid[policeX][policeY] == 'j'){
+
+        for(int i = 0; i < NUM_STARTING_JEWELS; i++){
+
+            if(policeX == c->jewels[i].getX() && policeY == c->jewels[i].getY()){//if in the same location
+
+                c->jewels[i].isPickedUp = true;
+
+                if(DEBUG){
+
+                    cout << "DEBUG(police.move):Jewel Picked up by police" << endl;
+                }
+            }
+        }
+
+        c->updateLetterGrids();//refresh the grid after collecting jewel
+    }
 
 
     return;
