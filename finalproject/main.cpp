@@ -33,6 +33,7 @@ to do
 change random seed back to 100
 write function documentation
 implement bribery for greedy robbers
+implement dropping jewels when a greedy robber meets another robber
 make outputs throught the game
 final thing: write main function
 */

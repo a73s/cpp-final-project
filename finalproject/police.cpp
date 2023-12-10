@@ -166,8 +166,8 @@ void police::move(city* c){
 
         totalValue = c->polices[0].confiscatedValue + c->polices[1].confiscatedValue;
 
-        c->polices[0].confiscatedValue = totalValue/2;
-        c->polices[1].confiscatedValue = totalValue/2;
+        c->polices[0].confiscatedValue = static_cast <int> (totalValue/2);//round down
+        c->polices[1].confiscatedValue = static_cast <int> (totalValue/2);
 
         cout << "The cops meet and exchange jewels, they now each have $" << totalValue/2 << " worth of jewels" << endl;
     }
