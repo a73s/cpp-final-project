@@ -25,6 +25,7 @@ jewel::jewel(const int X, const int Y){
             originalX = X;
             originalY = Y;
             jewelValue = X*X + Y*Y;
+            id = generateRand(1, 10000);
 
         }else{
 

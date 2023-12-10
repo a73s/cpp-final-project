@@ -55,7 +55,7 @@ class jewel{
 
     private: 
 
-        int id = generateRand(1, 10000);
+        int id;
         bool isPickedUp = false;
         bool confiscated = false;
         int jewelValue = -1;
