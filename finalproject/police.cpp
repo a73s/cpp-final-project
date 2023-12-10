@@ -166,8 +166,8 @@ void police::move(city* c){
 
         totalValue = c->polices[0].confiscatedValue + c->polices[1].confiscatedValue;
 
-        c->polices[0].confiscatedValue = totalValue/2;
-        c->polices[1].confiscatedValue = totalValue/2;
+        c->polices[0].confiscatedValue = static_cast <int> (totalValue/2);//round down
+        c->polices[1].confiscatedValue = static_cast <int> (totalValue/2);
 
         cout << "The cops meet and exchange jewels, they now each have $" << totalValue/2 << " worth of jewels" << endl;
     }
@@ -209,17 +209,21 @@ void police::arrest(robber & theRobber, city* c){
         c->updateLetterGrids();//refresh the grid after arrest
     }
 
+    c->numRobbersArrested++;
+
     return;
 }
 
 
 void police::tryArrest(city* c){
 
+    c->updateLetterGrids();
+
     if(c->robberGrid1[policeX][policeY] == 'p' || c->robberGrid2[policeX][policeY] == 'p' || c->robberGridGreedy1[policeX][policeY] == 'r' || c->robberGridGreedy2[policeX][policeY] == 'r'){//if there is a robber in the same grid
 
         for(int i = 0; i < NUM_STARTING_ROBBERS; i++){
 
-            if(c->robbers[i].getX() == policeX && c->robbers[i].getY() == policeY){//arrest all robbers in this spot
+            if(c->robbers[i].getX() == policeX && c->robbers[i].getY() == policeY && active){//arrest all robbers in this spot
 
                 arrest(c->robbers[i], c);
             }

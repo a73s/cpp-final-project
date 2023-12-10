@@ -16,21 +16,19 @@
 #include <iostream>
 #include <cstdlib>
 
-//description: 
-//pre: 
-//post: 
+
 class city{
 
     public:
 
-    //description: 
-    //pre: 
-    //post: 
+    //description: wipe and rebuilds the map grid to ensure that it is up to date
+    //pre: none
+    //post: will change the map grid
     void updateLetterGrids();
 
-    //description: 
-    //pre: 
-    //post: 
+    //description: prints the grid
+    //pre: none
+    //post: prints the grid
     void printGrid();
 
     //description: checks to see if the future position is within the area of the grid
@@ -61,6 +59,9 @@ class city{
     robber robbers[NUM_STARTING_ROBBERS] = {};// should be placed in this order: robber 1, robber 2, greedy robber 1, greedy robber 2
     jewel jewels[NUM_STARTING_JEWELS] = {};
     police polices[NUM_STARTING_POLICE] = {};
+
+    int numRobbersArrested = 0;
+    int numCopsBribed = 0;
 
     private:
 

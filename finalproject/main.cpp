@@ -6,35 +6,49 @@
 //Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
 
 /*
-Notes to grader:
-1. You can turn on debug options in func.h, there is a lot of output though
-2. all 30 points of extra credit are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
-3. I was getting errors in several placed where one class contained the second class but the second class also reference the first
+NOTES TO GRADER:
+
+I dont have time to finish the assignment, ill make this easy, heres the rundown:
+
+**to the best of my knowledge**
+THINGS THAT WORK:
+
+all of the basic functionality works, the game compiles and runs, everything moves, picks up jewels, and arrests as you would expect.
+
+all of extra credits are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
+
+I know I should have done that last but I didnt think I would have a problem finishing
+
+THINGS THAT DONT WORK:
+
+There should be more output to the console during the game
+
+the greedy robbers dont drop their loot when they run into another robber
+
+cops exchanging loot is messed up and the value of their confiscations is way higher than it should be
+
+
+THINGS THAT WORK DIFFERENTLY THAN THEY SHOULD:
+
+the greedy robber moving tword the cop works slightly differently.
+the robber just makes moves that lower the distance to the nearest cop, 
+if the distances to each cop is equal, than the robber will just continue to make moves that lower the distance
+
+The city grid is not just one grid. I did this to make it easier to quickly tell what characters are where
+also i regret not making these private
+
+I was getting errors in several places where one class contained the second class but the second class also reference the first
 and the best solution I could find is to use pointers to refer back to the first class. I know we havent covered these in class and I kinda had to learn them on my own
 but this was the only way to make it work the way I wanted without too much pain
-*/
 
-/*
-note to mason: 
-1. put your name, username, and sections at the top of every file
-2. if you need to debug output do this:
 
-if(DEBUG){
+FINAL NOTES:
 
-    cout << "DEBUG(main): initializing jewel #" << i << endl;
-}
+You can turn on debug options in func.h, there is a lot more output if you turn that on
 
-3. always use "g++ -Wall -W -s -pedantic-errors" when compiling, this is equivalent to fg++ on the school machines.
-4. use a branch when making changes, dont commit directly to main
-*/
+as is the grid is printed out every round, if this overflows your terminal you can turn it off in func.h
 
-/*
-to do 
-change random seed back to 100
-write function documentation
-implement bribery for greedy robbers
-make outputs throught the game
-final thing: write main function
+Have a great winter break!!!!
 */
 
 #include "jewel.h"
@@ -51,7 +65,7 @@ using namespace std;
 
 int main(){
 
-    srand(time(NULL));
+    srand(100);
     
     //-----===== Welcome message =====-----
     
@@ -65,23 +79,83 @@ int main(){
     cout << "The starting grid: " << endl;
     city.printGrid();
 
-    ///*
-    bool moveAgain;
-    //some test code
+
+    int round = 0;
+    bool anotherRound = true;
+
     do{
 
-        city.polices[0].move(&city);
-        city.robbers[2].move(&city);
-        city.printGrid();
+        round++;
+        cout << "It is round #" << round << " of 50." << endl;
 
-        cout << "Move again?(1/0) ";
-        cin >> moveAgain;
+        //move police and robbers
 
-    }while(moveAgain);
-    //*/
+        for(int i = 0; i < NUM_STARTING_POLICE; i++){//move police
 
+            city.polices[i].move(&city);
+        }
 
+        for(int i = 0; i < NUM_STARTING_ROBBERS; i++){//move robbers
 
+            city.robbers[i].move(&city);
+        }
+
+        //check for bribes and arrests
+
+        for(int i = 0; i < NUM_STARTING_ROBBERS; i++){//greedy robber attempt to bribe the cops
+
+            if(city.robbers[i].getGreeyness()){
+
+                city.robbers[i].tryBribe(&city);
+            }
+        }
+        
+
+        for(int i = 0; i < NUM_STARTING_POLICE; i++){//police arrest any robbers in their squares
+
+            city.polices[i].tryArrest(&city);
+        }
+
+        if(PRINT_GRID_EVERY_ROUND){
+            city.printGrid();
+        }
+
+        cout << "The robbers collective gem value is: $" << city.robbers[0].getCollectiveBagValue() << endl;
+
+        //win conditions
+
+        if(city.robbers[0].getCollectiveBagValue() > 2023){
+
+            cout << "Robbers win by bribing all of the cops." << endl;
+
+            anotherRound = false;
+        }
+
+        if(round >= 50){
+
+            cout << "Max round reached, ending game." << endl;
+
+            anotherRound = false;
+        }
+
+        if(city.numCopsBribed >= NUM_STARTING_POLICE){
+
+            cout << "All of the cops have been bribed by the robbers, robbers win." << endl;
+
+            anotherRound = false;
+        }
+
+        if(city.numRobbersArrested >= NUM_STARTING_ROBBERS){
+
+            cout << "All of the robbers have been arrested by the cops, cops win." << endl;
+
+            anotherRound = false;
+        }
+
+    }while(anotherRound);
+
+    cout << "The final grid:" << endl;
+    city.printGrid();
 
     return 0;
 }

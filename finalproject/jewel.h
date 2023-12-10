@@ -14,9 +14,6 @@
 #include <cstdlib>
 
 
-//description: 
-//pre: 
-//post: 
 class jewel{
 
     public:
@@ -31,7 +28,7 @@ class jewel{
         //description: sets the values for the jewel, must be run after creation of the jewel, can only be run once, unless there is an error
         //pre: input the initial X, Y, and value of the jewel, the X and Y should be within the bounds of the board and the jewel value should be positive
         //post: the function will check if the X and Y are in the board returns 1 if there is an error, otherwise it will return 0, if there is an error the function may be run again
-        jewel(const int X, const int Y, const int value);
+        jewel(const int X, const int Y);
 
 
         //-----====== Getters and setters =====-----
@@ -58,6 +55,7 @@ class jewel{
 
     private: 
 
+        int id;
         bool isPickedUp = false;
         bool confiscated = false;
         int jewelValue = -1;

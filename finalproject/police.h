@@ -16,13 +16,11 @@
 
 class city;//forward declaration
 
-
-//description: 
-//pre: 
-//post: 
 class police{
 
     public:
+
+        friend class robber;
 
         police(){}
 
@@ -31,31 +29,33 @@ class police{
         //post: returns 1 if there is an error, 0 otherwise, changes robberX and robberY to the desired values. can be run again if there is an error
         police(city* city, const int X, const int Y, const bool isActive = true);
 
-        void arrest();
-
+        //description: moves teh robber throught the city
+        //pre: none
+        //post: changes everything
         void move(city* city);
 
+        //description: checks if there are any robbers to arrest, then arrests them by calling the arrest function
+        //pre: pass in city
+        //post: calls the arrest function if the cop can arrest a robber
         void tryArrest(city* c);
-        
-        
-
-        //description: picks up a jewel thats in the same place as the robber
-        //pre: a jewel 
-        //post: returns true if theres an error, otherwise return 0. adds the gem to the robber's bag
-        //bool pickUpLoot(jewel & j);
 
         //-----====== Getters and setters =====-----
 
-        int getX(){return policeX;}
+        int getX() const {return policeX;}
 
-        int getY(){return policeY;}
+        int getY() const {return policeY;}
 
-        bool isActive(){return active;}
+        bool isActive() const {return active;}
 
-        bool isInitialized(){return initialized;}
+        bool isInitialized() const {return initialized;}
+
+        int getid() const {return id;}
 
     private:
 
+        //description: arrests the robber passed
+        //pre: pass robber and pass city adderess into pointer
+        //post: changes the robber to be inactive and changes the city grid to reflect that
         void arrest(robber & theRobber, city* c);
 
         bool active = false;
@@ -72,15 +72,6 @@ class police{
 };
 
 
-
-
-
-
-
-
-//description: 
-//pre: 
-//post: 
 
 
 

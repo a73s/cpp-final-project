@@ -18,31 +18,14 @@ using namespace std;
 
 //-----===== CONSTANTS =====-----
 
-const bool DEBUG = true;
+const bool DEBUG = false;
+const bool PRINT_GRID_EVERY_ROUND = true;
 const int GRID_SIZE = 7;
 const int NUM_STARTING_JEWELS = 30;
-const int JEWEL_MIN_VALUE = 10;
-const int JEWEL_MAX_VALUE = 1000;
 const int NUM_STARTING_ROBBERS = 4;
 const int NUM_STARTING_POLICE = 2;
 
 //-----===== FUNCTIONS =====-----
-
-//description: swaps any 2 variables of the same type
-//pre: any two variables of the same kind as input
-//post: returns nothing, swaps the values
-namespace myTemplates{
-
-    template <typename U>
-    void swap(U & v1, U & v2){
-
-        U temp = v1;
-        v1 = v2;
-        v2 = temp;
-
-        return;
-    }
-}
 
 //description: generates a random number in the range (inclusive)
 //pre:input 2 integers, otherwise will set to default, srand is assumed to be pre-seeded in main
