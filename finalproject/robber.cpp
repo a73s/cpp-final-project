@@ -311,6 +311,7 @@ void robber::move(city* c){
         movesSinceJewel = 0;
     }
 
+
     return;
 }
 
@@ -354,25 +355,35 @@ bool robber::isAJewelClose(city* city){
 }
 
 
+void robber::tryBribe(city* c){
 
-//-----====== Getters and setters =====-----
+    if(isGreedy && (c->copGrid1[robberX][robberY] == 'c' || c->copGrid2[robberX][robberY] == 'c')){//if !(i am a greedy robber and there is a cop in this spot)
 
-int robber::getX(){
+        if(DEBUG){
 
-    return robberX;
+            cout << "DEBUG(robber::tryBribe): no cop in the same spot as a greedy robber" << endl;
+        }
+
+        for(int i = 0; i < NUM_STARTING_POLICE; i++){
+
+            if(c->polices[i].isActive() && c->polices[i].getX() == robberX && c->polices[i].getY() == robberY){
+
+                c->polices[i].active = false;
+            }
+        }
+
+        return;
+    }
+
 }
 
-int robber::getY(){
 
-    return robberY;
-}
 
-bool robber::isActive(){
+/*
+void robber::greedyRobberCollision(city* c){
 
-    return active;
-}
+    if(isGreedy && (c->robberGrid1 == 'p' || c->robberGrid2 == 'p' || (c->robberGridGreedy1 == 'r' && c->robberGridGreedy2 == 'r'))){//if i am a greedy robber and there is another robber in this spot
 
-bool robber::isInitialized(){
 
-    return initialized;
-}
+    }
+*/

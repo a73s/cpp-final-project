@@ -24,6 +24,8 @@ class police{
 
     public:
 
+        friend class robber;
+
         police(){}
 
         //description: initializes the police's grid location, this must be run after the creation of the police

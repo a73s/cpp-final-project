@@ -49,6 +49,12 @@ class robber{
         void move(city* c);
 
 
+        void tryBribe(city* c);
+
+
+        //void greedyRobberCollision(city* c);
+
+
         /*
         //description: 
         //pre: 
@@ -59,13 +65,19 @@ class robber{
 
         //-----====== Getters and setters =====-----
 
-        int getX();
+        int getX() const {return robberX;}
 
-        int getY();
+        int getY() const {return robberY;}
 
-        bool isActive();
+        bool isActive() const {return active;}
 
-        bool isInitialized();
+        bool isInitialized() const {return initialized;}
+
+        bool getGreeyness() const {return isGreedyl;}
+
+        int getCollectiveBagValue() const{return collectiveBagValue;}
+
+
 
 
       
