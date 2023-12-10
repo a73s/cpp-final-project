@@ -403,18 +403,4 @@ void robber::tryBribe(city* c){
 
         return;
     }
-
-
-
 }
-
-
-
-/*
-void robber::greedyRobberCollision(city* c){
-
-    if(isGreedy && (c->robberGrid1 == 'p' || c->robberGrid2 == 'p' || (c->robberGridGreedy1 == 'r' && c->robberGridGreedy2 == 'r'))){//if i am a greedy robber and there is another robber in this spot
-
-
-    }
-*/

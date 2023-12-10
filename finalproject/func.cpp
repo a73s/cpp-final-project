@@ -48,7 +48,7 @@ void generateStartingBoard(city & city){
             
         }while(city.jewelGrid[newJewelX][newJewelY] == 'j');//make sure that theres only one jewel in each spot/ that we have 30 total
 
-        jewel newJewel(newJewelX, newJewelY, generateRand(JEWEL_MIN_VALUE, JEWEL_MAX_VALUE));//initialize jewel objects
+        jewel newJewel(newJewelX, newJewelY);//initialize jewel objects
 
         city.jewels[i-1] = newJewel;
     }

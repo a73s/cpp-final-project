@@ -8,10 +8,11 @@
 /*
 NOTES TO GRADER:
 
-I dont have time to finish the assignment, ill make this easy:
+I dont have time to finish the assignment, ill make this easy, heres the rundown:
 
 **to the best of my knowledge**
 THINGS THAT WORK:
+
 all of the basic functionality works, the game compiles and runs, everything moves, picks up jewels, and arrests as you would expect.
 
 all of extra credits are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
@@ -20,11 +21,11 @@ I know I should have done that last but I didnt think I would have a problem fin
 
 THINGS THAT DONT WORK:
 
-function documentation is lacking, missing, or wrong in places
-
 There should be more output to the console during the game
 
 the greedy robbers dont drop their loot when they run into another robber
+
+cops exchanging loot is messed up and the value of their confiscations is way higher than it should be
 
 
 THINGS THAT WORK DIFFERENTLY THAN THEY SHOULD:
@@ -41,24 +42,13 @@ and the best solution I could find is to use pointers to refer back to the first
 but this was the only way to make it work the way I wanted without too much pain
 
 
-
-
-
 FINAL NOTES:
 
-You can turn on debug options in func.h, there is a lot of output though
+You can turn on debug options in func.h, there is a lot more output if you turn that on
 
 as is the grid is printed out every round, if this overflows your terminal you can turn it off in func.h
 
-
-*/
-
-/*
-to do 
-change random seed back to 100
-write function documentation
-implement dropping jewels when a greedy robber meets another robber
-make outputs throught the game
+Have a great winter break!!!!
 */
 
 #include "jewel.h"
@@ -75,7 +65,7 @@ using namespace std;
 
 int main(){
 
-    srand(time(NULL));
+    srand(100);
     
     //-----===== Welcome message =====-----
     
@@ -89,20 +79,6 @@ int main(){
     cout << "The starting grid: " << endl;
     city.printGrid();
 
-    /*
-    bool moveAgain;
-    //some test code
-    do{
-
-        city.polices[0].move(&city);
-        city.robbers[2].move(&city);
-        city.printGrid();
-
-        cout << "Move again?(1/0) ";
-        cin >> moveAgain;
-
-    }while(moveAgain);
-    */
 
     int round = 0;
     bool anotherRound = true;

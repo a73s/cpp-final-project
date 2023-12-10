@@ -17,9 +17,7 @@
 class city;//fixes error
 class jewel;
 
-//description: 
-//pre: 
-//post: 
+
 class robber{
 
     public:
@@ -31,7 +29,7 @@ class robber{
         robber(){}//default constructor
 
         //description: initializes the robber's grid location, this must be run after the creation of the robber
-        //pre: the coordinate should be within the grid starting at 0 and ending at GRID_SIZE - 1
+        //pre: the coordinate should be within the grid starting at 0 and ending at GRID_SIZE - 1, pass city address into pointer
         //post: returns 1 if there is an error, 0 otherwise, changes robberX and robberY to the desired values. can be run again if there is an error
         robber(city* city, const int X, const int Y, const bool isGreedyInput, const bool isActive = true);
         
@@ -44,24 +42,14 @@ class robber{
         bool pickUpLoot(jewel & j);
 
         //description: moves the robber by 1 space in a random valid direction
-        //pre: robber should be initialized and active
+        //pre: robber should be initialized and active pass city address into pointer
         //post: moves the robber and redraws the board
         void move(city* c);
 
-
+        //description: checks for possible bribes to make, if there is a cop to bribe, it will bribe him
+        //pre: pass city address into pointer
+        //post: does the bribes, modifies required values
         void tryBribe(city* c);
-
-
-        //void greedyRobberCollision(city* c);
-
-
-        /*
-        //description: 
-        //pre: 
-        //post: 
-        void getArrested()
-        */
-
 
         //-----====== Getters and setters =====-----
 
@@ -77,10 +65,6 @@ class robber{
 
         int getCollectiveBagValue() const{return collectiveBagValue;}
 
-
-
-
-      
 
     private:
 

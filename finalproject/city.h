@@ -16,21 +16,19 @@
 #include <iostream>
 #include <cstdlib>
 
-//description: 
-//pre: 
-//post: 
+
 class city{
 
     public:
 
-    //description: 
-    //pre: 
-    //post: 
+    //description: wipe and rebuilds the map grid to ensure that it is up to date
+    //pre: none
+    //post: will change the map grid
     void updateLetterGrids();
 
-    //description: 
-    //pre: 
-    //post: 
+    //description: prints the grid
+    //pre: none
+    //post: prints the grid
     void printGrid();
 
     //description: checks to see if the future position is within the area of the grid

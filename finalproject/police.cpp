@@ -206,10 +206,10 @@ void police::arrest(robber & theRobber, city* c){
 
         cout << "Cop id #" << id << " arrested robber id #" << theRobber.id << " and confiscated " << numconfiscated << " jewels." << endl;
 
-        c->numRobbersArrested++;
-
         c->updateLetterGrids();//refresh the grid after arrest
     }
+
+    c->numRobbersArrested++;
 
     return;
 }
