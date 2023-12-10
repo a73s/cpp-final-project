@@ -6,12 +6,51 @@
 //Other Author: Mason Bateman (mcbqrz, lab section 301, class section 101)
 
 /*
-Notes to grader:
-1. You can turn on debug options in func.h, there is a lot of output though
-2. all of extra credit are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
-3. I was getting errors in several placed where one class contained the second class but the second class also reference the first
+NOTES TO GRADER:
+
+I dont have time to finish the assignment, ill make this easy:
+
+**to the best of my knowledge**
+THINGS THAT WORK:
+all of the basic functionality works, the game compiles and runs, everything moves, picks up jewels, and arrests as you would expect.
+
+all of extra credits are implemented, there is a comment in front and behind the section of code that implements the extra credit (robber.cpp -> robber::move())
+
+I know I should have done that last but I didnt think I would have a problem finishing
+
+THINGS THAT DONT WORK:
+
+function documentation is lacking, missing, or wrong in places
+
+There should be more output to the console during the game
+
+the greedy robbers dont drop their loot when they run into another robber
+
+
+THINGS THAT WORK DIFFERENTLY THAN THEY SHOULD:
+
+the greedy robber moving tword the cop works slightly differently.
+the robber just makes moves that lower the distance to the nearest cop, 
+if the distances to each cop is equal, than the robber will just continue to make moves that lower the distance
+
+The city grid is not just one grid. I did this to make it easier to quickly tell what characters are where
+also i regret not making these private
+
+I was getting errors in several places where one class contained the second class but the second class also reference the first
 and the best solution I could find is to use pointers to refer back to the first class. I know we havent covered these in class and I kinda had to learn them on my own
 but this was the only way to make it work the way I wanted without too much pain
+
+
+
+
+
+FINAL NOTES:
+
+You can turn on debug options in func.h, there is a lot of output though
+
+as is the grid is printed out every round, if this overflows your terminal you can turn it off in func.h
+
+
 */
 
 /*
@@ -101,7 +140,9 @@ int main(){
             city.polices[i].tryArrest(&city);
         }
 
-        city.printGrid();
+        if(PRINT_GRID_EVERY_ROUND){
+            city.printGrid();
+        }
 
         cout << "The robbers collective gem value is: $" << city.robbers[0].getCollectiveBagValue() << endl;
 
