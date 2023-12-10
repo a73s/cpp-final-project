@@ -62,6 +62,9 @@ class city{
     jewel jewels[NUM_STARTING_JEWELS] = {};
     police polices[NUM_STARTING_POLICE] = {};
 
+    int numRobbersArrested = 0;
+    int numCopsBribed = 0;
+
     private:
 
     

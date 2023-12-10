@@ -73,7 +73,7 @@ class robber{
 
         bool isInitialized() const {return initialized;}
 
-        bool getGreeyness() const {return isGreedyl;}
+        bool getGreeyness() const {return isGreedy;}
 
         int getCollectiveBagValue() const{return collectiveBagValue;}
 

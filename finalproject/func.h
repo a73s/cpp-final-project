@@ -22,7 +22,7 @@ const bool DEBUG = false;
 const int GRID_SIZE = 7;
 const int NUM_STARTING_JEWELS = 30;
 const int JEWEL_MIN_VALUE = 10;
-const int JEWEL_MAX_VALUE = 100;
+const int JEWEL_MAX_VALUE = 200;
 const int NUM_STARTING_ROBBERS = 4;
 const int NUM_STARTING_POLICE = 2;
 

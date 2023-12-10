@@ -24,7 +24,7 @@ jewel::jewel(const int X, const int Y, const int value){
             initialized = true;
             originalX = X;
             originalY = Y;
-            jewelValue = value;
+            jewelValue = X*X + Y*Y;
 
         }else{
 

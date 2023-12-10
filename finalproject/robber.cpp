@@ -109,9 +109,19 @@ void robber::move(city* c){
         return;
     }
 
+    if(c->numCopsBribed >= NUM_STARTING_POLICE){
+
+        if(DEBUG){
+            cout << "DEBUG(robber.move): all the police are bribed, skipping" << endl;
+        }
+
+        return;
+    }
+
     int moveDownAmount = 0, moveRightAmount = 0;
     int newx = robberX, newy = robberY;
     bool doAgain;//this is for checking if we need to do the do-while loop again, i use this to differentiate between greedy and non greedy robbers
+    int numDistErrors = 0;
 
     do{//we can only get away with using a do while loop because there is never a situation where there is not an open space to move to
 
@@ -215,9 +225,14 @@ void robber::move(city* c){
                     float tempDist = distance(robberX, robberY, c->polices[i].getX(), c->polices[i].getY());
                     float tempDist2 = distance(newx, newy, c->polices[i].getX(), c->polices[i].getY());
 
-                    if(tempDist == 0 && DEBUG){
+                    if(tempDist == 0){
+                        
+                        if(DEBUG){
+                            cout << "Error(robber.move, greedy robber whos bag is full(moving tword a cop)): we are already on a cop, distance is 0" << endl;
+                        }
 
-                        cout << "Error(robber.move, greedy robber whos bag is full(moving tword a cop)): we are already on a cop, distance is 0" << endl;
+                        numDistErrors++;
+                        
                     }
 
                     if(tempDist < currentMinDist){
@@ -257,9 +272,18 @@ void robber::move(city* c){
 
         //END EXTRA CREDIT SECTION
 
+        
+
         if(!(c->isValidMove(newx, newy))){//no matter what we cannot make an invalid move
 
             doAgain = true;
+        }
+
+        if(numDistErrors > 10){
+            
+            numDistErrors = 0;
+
+            doAgain = false;
         }
 
     }while(doAgain);//redo if it would move us out of bounds
@@ -357,7 +381,7 @@ bool robber::isAJewelClose(city* city){
 
 void robber::tryBribe(city* c){
 
-    if(isGreedy && (c->copGrid1[robberX][robberY] == 'c' || c->copGrid2[robberX][robberY] == 'c')){//if !(i am a greedy robber and there is a cop in this spot)
+    if(isGreedy && (c->copGrid1[robberX][robberY] == 'c' || c->copGrid2[robberX][robberY] == 'c') && active && gemBag >= 10){//if !(i am a greedy robber and there is a cop in this spot)
 
         if(DEBUG){
 
@@ -369,11 +393,18 @@ void robber::tryBribe(city* c){
             if(c->polices[i].isActive() && c->polices[i].getX() == robberX && c->polices[i].getY() == robberY){
 
                 c->polices[i].active = false;
+
+                cout << "Robber id " << id << "bribed cop id " << c->polices[i].getid() << endl;
+                c->numCopsBribed++;
             }
         }
 
+        c->updateLetterGrids();
+
         return;
     }
+
+
 
 }
 

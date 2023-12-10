@@ -48,13 +48,15 @@ class police{
 
         //-----====== Getters and setters =====-----
 
-        int getX(){return policeX;}
+        int getX() const {return policeX;}
 
-        int getY(){return policeY;}
+        int getY() const {return policeY;}
 
-        bool isActive(){return active;}
+        bool isActive() const {return active;}
 
-        bool isInitialized(){return initialized;}
+        bool isInitialized() const {return initialized;}
+
+        int getid() const {return id;}
 
     private:
 

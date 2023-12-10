@@ -206,6 +206,8 @@ void police::arrest(robber & theRobber, city* c){
 
         cout << "Cop id #" << id << " arrested robber id #" << theRobber.id << " and confiscated " << numconfiscated << " jewels." << endl;
 
+        c->numRobbersArrested++;
+
         c->updateLetterGrids();//refresh the grid after arrest
     }
 
@@ -215,11 +217,13 @@ void police::arrest(robber & theRobber, city* c){
 
 void police::tryArrest(city* c){
 
+    c->updateLetterGrids();
+
     if(c->robberGrid1[policeX][policeY] == 'p' || c->robberGrid2[policeX][policeY] == 'p' || c->robberGridGreedy1[policeX][policeY] == 'r' || c->robberGridGreedy2[policeX][policeY] == 'r'){//if there is a robber in the same grid
 
         for(int i = 0; i < NUM_STARTING_ROBBERS; i++){
 
-            if(c->robbers[i].getX() == policeX && c->robbers[i].getY() == policeY){//arrest all robbers in this spot
+            if(c->robbers[i].getX() == policeX && c->robbers[i].getY() == policeY && active){//arrest all robbers in this spot
 
                 arrest(c->robbers[i], c);
             }

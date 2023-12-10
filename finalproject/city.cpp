@@ -148,7 +148,7 @@ void city::updateLetterGrids(){
 
         police copCopy = polices[i];
 
-        if(!copCopy.isActive() || !copCopy.isInitialized()){
+        if(!copCopy.isInitialized()){
 
             continue;
         }

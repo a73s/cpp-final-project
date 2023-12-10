@@ -18,7 +18,6 @@ but this was the only way to make it work the way I wanted without too much pain
 to do 
 change random seed back to 100
 write function documentation
-implement bribery for greedy robbers
 implement dropping jewels when a greedy robber meets another robber
 make outputs throught the game
 */
@@ -68,10 +67,13 @@ int main(){
 
     int round = 0;
     bool anotherRound = true;
+
     do{
 
         round++;
         cout << "It is round #" << round << " of 50." << endl;
+
+        //move police and robbers
 
         for(int i = 0; i < NUM_STARTING_POLICE; i++){//move police
 
@@ -83,10 +85,11 @@ int main(){
             city.robbers[i].move(&city);
         }
 
-        
-        for(int i = 0; i < NUM_STARTING_ROBBERS; i++){//greedy robber attempt to bribe the cops, this will check if they are in the same spot
+        //check for bribes and arrests
 
-            if(city.robbers[i].isGreedy){
+        for(int i = 0; i < NUM_STARTING_ROBBERS; i++){//greedy robber attempt to bribe the cops
+
+            if(city.robbers[i].getGreeyness()){
 
                 city.robbers[i].tryBribe(&city);
             }
@@ -102,6 +105,8 @@ int main(){
 
         cout << "The robbers collective gem value is: $" << city.robbers[0].getCollectiveBagValue() << endl;
 
+        //win conditions
+
         if(city.robbers[0].getCollectiveBagValue() > 2023){
 
             cout << "Robbers win by bribing all of the cops." << endl;
@@ -109,14 +114,23 @@ int main(){
             anotherRound = false;
         }
 
-        for(int i = 0; i < NUM_STARTING_ROBBERS; i++){//move robbers
-
-            city.robbers[i].move(&city);
-        }
-
         if(round >= 50){
 
             cout << "Max round reached, ending game." << endl;
+
+            anotherRound = false;
+        }
+
+        if(city.numCopsBribed >= NUM_STARTING_POLICE){
+
+            cout << "All of the cops have been bribed by the robbers, robbers win." << endl;
+
+            anotherRound = false;
+        }
+
+        if(city.numRobbersArrested >= NUM_STARTING_ROBBERS){
+
+            cout << "All of the robbers have been arrested by the cops, cops win." << endl;
 
             anotherRound = false;
         }
