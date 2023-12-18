@@ -37,16 +37,16 @@ if the distances to each cop is equal, than the robber will just continue to mak
 The city grid is not just one grid. I did this to make it easier to quickly tell what characters are where
 also i regret not making these private
 
-I was getting errors in several places where one class contained the second class but the second class also reference the first
-and the best solution I could find is to use pointers to refer back to the first class. I know we havent covered these in class and I kinda had to learn them on my own
-but this was the only way to make it work the way I wanted without too much pain
-
 
 FINAL NOTES:
 
 You can turn on debug options in func.h, there is a lot more output if you turn that on
 
 as is the grid is printed out every round, if this overflows your terminal you can turn it off in func.h
+
+I was getting errors in several places where one class contained the second class but the second class also reference the first
+and the best solution I could find is to use pointers to refer back to the first class. I know we havent covered these in class and I kinda 
+had to learn them on my own but this was the only way to make it work the way I wanted without too much pain.
 
 Have a great winter break!!!!
 */
